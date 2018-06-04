@@ -15,6 +15,7 @@ $bas = BillingAccount::all();
             <li><a href="{{url('/Student/'.$student->id.'/Enrollment')}}"><span class="nav-icon"></span> Enrolment</a></li>
             <li><a href=""><span class="nav-icon"></span> Communication</a></li>
             <li><a href=""><span class="nav-icon"></span> Finance</a></li>
+            <li><a href=""><span class="nav-icon"></span> Log</a></li>
             <li><a href=""><span class="nav-icon"></span> Files</a></li>
         </ul>
     </div>
