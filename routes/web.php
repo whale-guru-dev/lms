@@ -20,7 +20,6 @@ Auth::routes();
 Route::get('/Home', 'HomeController@index')->name('Home');
 
 
-
 Route::group(['prefix'=>'Center'],function(){
 
 	Route::get('/', 'CenterController@index');
