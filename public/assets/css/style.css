@@ -2392,10 +2392,12 @@ li .collapsible-body .short-line {
     text-align: center;
 }
 .sec-area {
-    height: 100%;
-    overflow: hidden;
-    padding: 15px 15px 50px;
-    position: relative;
+  clear: both;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  padding: 15px 15px 50px;
+  position: relative;
 }
 .row.bottom-part {
     height: auto;
@@ -3167,7 +3169,8 @@ nav ul a {
     margin: 30px auto 15px;
 }
 #enrol-a1 .inner-top-part {
-    border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 20px;
 }
 .choose-class {
   text-align: center;
@@ -3326,7 +3329,9 @@ nav ul a {
   margin: 0;
 }
 .modal .top-left > h5 {
+  display: inline-block;
   font-size: 24px;
+  margin: 0;
 }
 .modal .modal-trigger.modal-button {
   margin: 0;
@@ -3529,3 +3534,220 @@ nav ul a {
   padding: 10px;
 }
 /*Pass forgot page End*/
+
+/*Page 37*/
+#replacement-lesson-a .mid-part {
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px;
+  text-align: left;
+  vertical-align: middle;
+  width: 47%;
+}
+.mid-part.replacment-b {
+  border: 1px solid #4d73db;
+}
+.exchange-icon {
+  display: inline-block;
+  line-height: inherit;
+  margin: 0 5px;
+  padding: 10px;
+}
+.replaced-a {
+  background: #f8f8f8 none repeat scroll 0 0;
+}
+#replacement-lesson-b .inner-top-part {
+  text-align: center;
+}
+
+.mid-part > h4 {
+    color: #959595;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.outline {
+    background: transparent none repeat scroll 0 0;
+    border: 1px solid #959595;
+    border-radius: 5px;
+    box-shadow: none;
+    color: #4d73db;
+}
+#replacement-choose-class-2 .inner-top-part .input-field {
+  display: block;
+}
+#replacement-choose-class-2 .modal-content {
+  margin: 0 auto;
+  text-align: left;
+  width: 60%;
+}
+.top-left > h4 {
+  color: #363636;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.re-mark > p {
+    display: inline-block;
+    margin-right: 30px;
+}
+.re-mark {
+    padding-top: 30px;
+}
+#withdraw-student .mid-part {
+    border: medium none;
+}
+
+.withdrow-b .mid-part {
+    text-align: left;
+}
+#suspend-student .mid-part tr {
+  border-bottom: medium none;
+}
+#suspend-student .input-field {
+    display: inline-block;
+    margin-right: 40px;
+}
+.mid-part.withdraw-s {
+    text-align: left;
+}
+#suspend-student .withdraw-s .btn-large {
+    display: inline-block;
+    vertical-align: top;
+}
+#suspend-student .mid-part tr {
+    border-bottom: medium none;
+}
+
+.mid-part.replaced-a.left-align {
+    text-align: left;
+}
+.icon-info {
+    color: #5881f1;
+}
+.icon-info i {
+    vertical-align: sub;
+}
+
+.close-icon {
+    color: #212121;
+    cursor: pointer;
+    float: right;
+    margin: 10px;
+    position: relative;
+}
+
+.information-card .mid-part.replaced-a.left-align {
+    padding: 10px;
+}
+.wallet-heading > li {
+    display: inline-block;
+    font-size: 18px;
+    vertical-align: text-top;
+}
+.wallet-heading img {
+    margin-right: 5px;
+}
+
+.outline-box {
+    border: 1px solid #ebebeb;
+    padding: 15px;
+}
+.left-box-a {
+    display: inline-block;
+}
+
+.right-box-a {
+    display: inline-block;
+    margin-left: 15px;
+    vertical-align: top;
+}
+.outline-box .color-blue {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+}
+.right-part-a {
+    padding: 10px 15px;
+}
+.right-part-a .outline-box {
+    display: inline-block;
+    margin: 1px;
+    width: 49%;
+}
+.outline-box.color-blue {
+    background: #4d73db none repeat scroll 0 0;
+    color: #fff;
+}
+.right-part-a .outline-box:nth-child(4) .right-box-a .color-blue {
+    color: #fff;
+}
+.right-part-btn .btn {
+  font-size: 10px;
+}
+.contract .left-icon {
+  background-image: url("../img/contract-blue.png");
+}
+
+.billing-account-area h3 {
+    font-size: 30px;
+    text-transform: uppercase;
+}
+.billing-nav li {
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+}
+.billing-nav > ul {
+    width: 100%;
+}
+.billing-nav li:nth-child(2) {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+.billing-nav {
+    background: #f0f0f0 none repeat scroll 0 0;
+    padding: 10px;
+}
+.billing-account-area .row {
+    padding: 25px;
+}
+.billing-account-area .contact-info {
+  background: #fff none repeat scroll 0 0;
+  width: 100%;
+}
+.billing-account-area .prfile-details li {
+  color: #212121;
+}
+.prfile-details li:nth-child(2) {
+  font-size: 18px;
+  font-weight: 500;
+}
+.prfile-details li:nth-child(1) {
+  font-size: 12px;
+  font-weight: 300;
+}
+/*Page 37 End*/
+
+/*Page 44 */
+.data-date-a li {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: middle;
+}
+.data-date-a > ul {
+    padding: 10px;
+}
+.search-btn > button {
+  background: transparent none repeat scroll 0 0;
+  border: medium none;
+  cursor: pointer;
+}
+.secend-nav.admin-a ul li:nth-child(1) span.nav-icon {
+  background: rgba(0, 0, 0, 0) url("../img/course-blue-sm.png") no-repeat scroll 0 0;
+}
+.secend-nav.admin-a ul li:nth-child(2) span.nav-icon {
+  background: rgba(0, 0, 0, 0) url("../img/daterange.png") no-repeat scroll 0 0;
+}
+
+/*Page 44 End*/

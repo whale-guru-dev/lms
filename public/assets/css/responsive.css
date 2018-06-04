@@ -212,6 +212,38 @@ nav .menu-mid.center {
   font-size: 18px;
 }
 /*page 23 end*/
+    
+/*page  26-32*/
+.class-list {
+  text-align: center;
+}
+.single-class {
+  text-align: left;
+  width: 33%;
+}
+.modal .bttom-filter-area {
+  clear: both;
+}
+#enrol-a2 .choose-class {
+  text-align: center;
+}
+.inner-bottom-right {
+  float: none;
+  margin-left: 0;
+  margin-top: 20px;
+}
+.inner-bottom-left {
+  text-align: center;
+}
+#course-summary .inner-part-a .btn {
+  margin: 0 0 15px;
+}
+.inner-part-a {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+/*page  26-32 end*/
 }  
 
 /* Wide Mobile Layout: 480px. */
@@ -275,9 +307,57 @@ nav .menu-mid.center {
   font-size: 18px;
 }
 /*page 23 end*/
+    
+/*page  26-32*/
+.class-list {
+  text-align: center;
+}
+.single-class {
+  text-align: left;
+  width: 33%;
+}
+.modal .bttom-filter-area {
+  clear: both;
+}
+#enrol-a2 .choose-class {
+  text-align: center;
+}
+.inner-bottom-right {
+  float: none;
+  margin-left: 0;
+  margin-top: 20px;
+}
+.inner-bottom-left {
+  text-align: center;
+}
+#course-summary .inner-part-a .btn {
+  margin: 0 0 15px;
+}
+.inner-part-a {
+  margin-bottom: 15px;
+  width: 100%;
+}
+.modal-top-part {
+  text-align: center;
+}
+.modal .top-left > h5 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.modal .bttom-filter-area {
+  border: medium none;
+  margin: 0 auto;
+  padding: 15px;
+  width: 100%;
+}
+.modal .modal-trigger.modal-button {
+  font-size: 16px;
+  margin: 0;
+}
+/*page  26-32 end*/
 }
 /* Wide Mobile Layout: 480px. */
-@media only screen and (max-width: 480px) { 
+@media only screen and (max-width: 479px) { 
 .container {
   width: 100%;
 }
@@ -307,7 +387,24 @@ nav .menu-mid.center {
   vertical-align: initial;
 }
 .title-a > h5 {
+  display: block;
   font-size: 18px;
+}
+.badge-blue {
+  margin: 0;
+}
+.badge-org {
+  margin: 0;
+}
+.enrolment-single-area .table-profile > table tr td {
+  display: block;
+  padding: 10px;
+}
+.enrolment-single-area .table-profile tbody {
+  display: inline-block;
+}
+.table-profile thead {
+  display: inline-block;
 }
 .enrolment-single-area table i {
   display: none;
@@ -328,6 +425,55 @@ nav .menu-mid.center {
   text-align: center;
 }
 /*page 23 end*/
+    
+/*page  26-32*/
+    
+.class-list {
+  text-align: center;
+}
+.single-class {
+  text-align: left;
+  width: 90%;
+}
+.modal .bttom-filter-area {
+  clear: both;
+}
+#enrol-a2 .choose-class {
+  text-align: center;
+}
+.inner-bottom-right {
+  float: none;
+  margin-left: 0;
+  margin-top: 20px;
+}
+.inner-bottom-left {
+  text-align: center;
+}
+#course-summary .inner-part-a .btn {
+  margin: 0 0 15px;
+}
+.inner-part-a {
+  margin-bottom: 15px;
+  width: 100%;
+}
+.modal-top-part {
+  text-align: center;
+}
+.modal .top-left > h5 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.modal .bttom-filter-area {
+  border: medium none;
+  margin: 0 auto;
+  padding: 15px;
+  width: 100%;
+}
+.modal .modal-trigger.modal-button {
+  font-size: 16px;
+  margin: 0;
+}
+/*page  26-32 end*/
 nav .brand-logo {
   left: 0;
   padding: 0 10px 0 0;

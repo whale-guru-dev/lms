@@ -38,7 +38,11 @@ $('.chips-placeholder').chips({
 
     });
 
-
+$(document).ready(function(){
+    $(".close-icon").click(function(){
+        $(".information-card").hide();
+    });
+});
     jQuery(window).load(function(){
 
         
