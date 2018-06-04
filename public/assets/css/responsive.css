@@ -1,0 +1,395 @@
+/* Medium Layout: 1920px. */
+@media only screen and (min-width: 1685px) and (max-width: 2400px) { 
+    .container {
+        max-width: 1684px!important;
+        width: 1684px!important;
+    }
+
+}
+/* Medium Layout: 1280px. */
+@media only screen and (min-width: 1280px) and (max-width: 1684px) { 
+.container {
+    width: 100%!important;
+}
+.inner-part h4 {
+font-size: 24px;
+}
+.inner-part p {
+    font-size: 12px;
+}
+.boxs-a {
+    height: 205px;
+    margin: 10px;
+    width: 230px;
+}
+.modal-box-a {
+    height: 335px;
+    margin: 20px;
+    padding: 40px;
+    width: 285px;
+}
+.modal-box-a h3 {
+    font-size: 24px;
+    margin-bottom: 40px;
+    padding-bottom: 35px;
+}
+.modal {
+    width: 81% !important;
+}
+.left-side h2 {
+  font-size: 26px;
+}
+/*page 23*/
+.secend-nav ul a {
+  padding: 18px 10px;
+}
+.profile-info-area {
+  width: 80%;
+}
+.table-profile td {
+  font-size: 12px;
+}
+.archive-area > h4 {
+  font-size: 18px;
+}
+.row .col.l6 {
+  width: 100%;
+}
+/*page 23 end*/
+/*page 33 */
+.subject-area .profile-info-area {
+    width: 100%;
+}
+/*page 33 end*/
+}
+/* Medium Layout: 1280px. */
+@media only screen and (min-width: 993px) and (max-width: 1279px) { 
+.container {
+  width: 100%;
+}
+nav .brand-logo {
+  left: 0;
+  transform: none;
+}
+.menu-mid {
+  width: 220px;
+}
+.left-side h2 {
+  font-size: 18px;
+}
+.left-side h1 {
+  font-size: 26px;
+}
+.copyright, .left-side .center a {
+  font-size: 12px;
+}
+/*page 19*/
+.header-inner li {
+  border-bottom: 2px solid transparent;
+  display: block;
+  padding: 10px 30px;
+  width: 100%;
+}
+nav .menu-mid.center {
+  left: 50px;
+  position: relative;
+  transform: none;
+}
+.status-table tr th {
+  font-size: 12px;
+}
+.status-table tbody td {
+  font-size: 12px;
+  text-align: center;
+}
+.avatar-box {
+  margin: 0;
+}
+.status-active, .status-inactive {
+  margin-right: 0;
+}
+.pagin-box .pagination {
+  width: auto;
+}
+.pagin-box {
+  text-align: center;
+}
+/*page 19 end*/
+/*page 23*/
+.secend-nav ul a {
+  padding: 18px 10px;
+}
+.profile-info-area {
+  width: 66%;
+}
+.table-profile td {
+  font-size: 12px;
+}
+.archive-area > h4 {
+  font-size: 18px;
+}
+.row .col.l6 {
+  width: 100%;
+}
+/*page 23 end*/
+}
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 992px) { 
+.container {
+  width: 100%;
+}
+nav .brand-logo {
+  left: 0;
+  transform: none;
+}
+.menu-mid {
+  width: 220px;
+}
+.login-area .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.span-col-2{grid-column: span 2 / auto;}
+.left-side h2 {
+  font-size: 28px;
+}
+.inner-area {
+  top: auto;
+  transform: none;
+}
+.top-text-left {
+  text-align: center;
+}
+.row.bottom-part {
+  bottom: 0;
+  position: relative;
+}
+
+/*page 19*/
+.header-inner li {
+  border-bottom: 2px solid transparent;
+  display: block;
+  padding: 10px 30px;
+  width: 100%;
+}
+nav .menu-mid.center {
+  left: 50px;
+  position: relative;
+  transform: none;
+}
+.status-table tr th {
+  font-size: 12px;
+}
+.status-table tbody td {
+  font-size: 12px;
+  text-align: center;
+}
+.avatar-box {
+  margin: 0;
+}
+.status-active, .status-inactive {
+  margin-right: 0;
+}
+.pagin-box .pagination {
+  width: auto;
+}
+.pagin-box {
+  text-align: center;
+}
+/*page 19 end*/
+    
+/*page 23*/
+.secend-nav ul a {
+  padding: 18px 10px;
+}
+.profile-info-area {
+  width: 66%;
+}
+.table-profile td {
+  font-size: 12px;
+}
+.archive-area > h4 {
+  font-size: 18px;
+}
+/*page 23 end*/
+}  
+
+/* Wide Mobile Layout: 480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) { 
+.container {
+  width: 100%;
+}
+nav .brand-logo {
+  left: 0;
+  padding: 0 10px 0 0;
+  position: relative;
+  top: 10px;
+  transform: none;
+}
+nav .menu-mid.center {
+  left: auto;
+  position: relative;
+  transform: none;
+}
+.menu-mid {
+  padding: 0 15px;
+  width: 180px;
+}
+.login-area .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.span-col-2{grid-column: span 2 / auto;}
+.top-text-left {
+  text-align: center;
+}
+.row.bottom-part {
+  bottom: 0;
+  position: relative;
+}
+.left-side .center a {
+  font-size: 12px;
+}
+.left-side h2 {
+  font-size: 26px;
+}
+.copyright {
+  font-size: 12px;
+  padding-top: 25px;
+}
+.inner-area {
+  top: auto;
+  transform: none;
+}
+/*page 23*/
+.secend-nav ul a {
+  padding: 18px 10px;
+}
+.profile-info-area {
+  width: 66%;
+}
+.table-profile td {
+  font-size: 12px;
+}
+.archive-area > h4 {
+  font-size: 18px;
+}
+/*page 23 end*/
+}
+/* Wide Mobile Layout: 480px. */
+@media only screen and (max-width: 480px) { 
+.container {
+  width: 100%;
+}
+/*page 23*/
+.secend-nav ul a {
+  padding: 18px 10px;
+}
+.profile-info-area {
+  width: 100%;
+}
+.table-profile td {
+  font-size: 12px;
+}
+.archive-area > h4 {
+  font-size: 18px;
+}
+.bottom-part-relation-info .g-info {
+  height: auto;
+  width: 100%;
+}
+.contact-info {
+  margin-top: 15px;
+  width: 100%;
+}
+.right-part-select {
+  float: none;
+  vertical-align: initial;
+}
+.title-a > h5 {
+  font-size: 18px;
+}
+.enrolment-single-area table i {
+  display: none;
+}
+.top-right {
+  display: block;
+  float: none;
+  text-align: center;
+}
+.top-left {
+  display: block;
+  text-align: center;
+  vertical-align: top;
+}
+.user-image {
+  display: block;
+  margin: auto auto 15px;
+  text-align: center;
+}
+/*page 23 end*/
+nav .brand-logo {
+  left: 0;
+  padding: 0 10px 0 0;
+  position: relative;
+  top: 10px;
+  transform: none;
+}
+.menu-mid {
+  padding: 0 15px;
+  width: 180px;
+}
+nav {
+  text-align: center;
+}
+nav ul li {
+  display: inline-block;
+  float: none;
+}
+nav .right {
+  float: none !important;
+}
+nav .menu-mid.center {
+  float: right;
+  left: auto;
+  position: relative;
+  transform: none;
+}
+.login-area .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.span-col-2{grid-column: span 2 / auto;
+}
+.top-text-left {
+  text-align: center;
+}
+.row.bottom-part {
+  bottom: 0;
+  position: relative;
+}
+.left-side .center a {
+  font-size: 12px;
+}
+.left-side h2 {
+  font-size: 26px;
+}
+.copyright {
+  font-size: 12px;
+  padding-top: 25px;
+}
+.inner-area {
+  top: auto;
+  transform: none;
+}
+.left-side h2 {
+  font-size: 14px;
+}
+.left-side ul li {
+  padding: 0 3px;
+}
+.left-side .center a {
+  font-size: 8px;
+}
+}
+
