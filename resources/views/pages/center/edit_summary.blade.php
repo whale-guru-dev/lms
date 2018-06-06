@@ -133,7 +133,7 @@
 
                   <div class="prfile-details">
                     <ul>
-                      <li>{{App\Models\User::where('id',$contact->center_contact_manager)->first()->fname.' '.App\Models\User::where('id',$contact->center_contact_manager)->first()->lname}}</li>
+                      <li><input name="manager" type="text" value="{{$contact->center_contact_manager}}"></li>
                       <li>Contact Manager</li>
                     </ul>
                   </div>
@@ -146,7 +146,7 @@
 
                   <div class="prfile-details">
                     <ul>
-                      <li>{{App\Models\User::where('id',$contact->center_contact_senior_manager)->first()->fname.' '.App\Models\User::where('id',$contact->center_contact_senior_manager)->first()->lname}}</li>
+                      <li><input name="sr_manager" type="text" value="{{$contact->center_contact_senior_manager}}"></li>
                       <li>Senior Manager</li>
                     </ul>
                   </div>
@@ -159,7 +159,7 @@
 
                   <div class="prfile-details">
                     <ul>
-                      <li>{{App\Models\User::where('id',$contact->center_contact_district_manager)->first()->fname.' '.App\Models\User::where('id',$contact->center_contact_district_manager)->first()->lname}}</li>
+                      <li><input name="ds_manager" type="text" value="{{$contact->center_contact_district_manager}}"></li>
                       <li>District Manager</li>
                     </ul>
                   </div>
@@ -172,7 +172,7 @@
 
                   <div class="prfile-details">
                     <ul>
-                      <li>{{App\Models\User::where('id',$contact->center_contact_incident_manager)->first()->fname.' '.App\Models\User::where('id',$contact->center_contact_incident_manager)->first()->lname}}</li>
+                      <li><input name="inc_manager" type="text" value="{{$contact->center_contact_incident_manager}}"></li>
                       <li>Incident Manager</li>
                     </ul>
                   </div>
@@ -180,7 +180,8 @@
               </div>
             </div>
           
-          </div>                  
+          </div>        
+          <button class="btn btn-primary" onclick="event.preventDefault();document.getElementById('summary_form').submit();">Save</button>          
         </div>
 
         <div class="col s5">
@@ -194,9 +195,9 @@
               <table>
                 <tr>
                   <td>From</td>
-                  <td><div class="date-a"><input name="from_date"  class="datepicker" value="{{$summary->center_location_from_date}}"></div> </td>
+                  <td><div class="date-a"><input name="from_date"  class="datepicker" value="{{$summary->center_location_from_date}}" ></div> </td>
                   <td>to</td>
-                  <td><div class="date-a"><input name="to_date"  class="datepicker" value="{{$summary->center_location_to_date}}"></div> </td>
+                  <td><div class="date-a"><input name="to_date"  class="datepicker" value="{{$summary->center_location_to_date}}" ></div> </td>
                 </tr>
 
                 <tr>

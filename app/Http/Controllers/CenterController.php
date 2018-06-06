@@ -12,7 +12,7 @@ use App\Models\CenterFinance;
 use App\Models\CenterSchedule;
 use App\Models\CenterSummary;
 use App\Models\UserModulePermission;
-
+use \Carbon\Carbon;
 
 //test
 
@@ -57,7 +57,7 @@ class CenterController extends Controller
 	    			if(count($schedule)>0)
 	    				return view('pages.center.schedule',['id'=>$id,'schedule'=>$schedule]);
 	    			else
-	    				return view('pages.center.start_schedule');
+	    				return view('pages.center.start_schedule',['id'=>$id]);
 	    			break;
 
 	    		case 'Resources':
@@ -123,10 +123,18 @@ class CenterController extends Controller
 	    			return view('pages.center.edit_finance',['id'=>$id,'finance'=>$finance]);
 	    			break;
 
-	    		case 'Schedule':
+                case 'Schedules':
+                    return view('pages.center.start_schedule',['id'=>$id]);
+
+	    		case 'Default-Schedule':
 	    			$schedule = CenterSchedule::where('center_id',$id)->get();
 	    			return view('pages.center.edit_schedule',['id'=>$id,'schedule'=>$schedule]);
 	    			break;
+
+                case 'Blank-Schedule':
+                    $schedule = [];
+                    return view('pages.center.edit_schedule',['id'=>$id,'schedule'=>$schedule]);
+                    break;
 
 	    		case 'Resources':
 	    			# code...
@@ -160,7 +168,7 @@ class CenterController extends Controller
 		    					  'center_location_state'=>$request['state'],
 		    					  'center_location_city'=>$request['city'],
 		    					  'center_location_region'=>$request['region']]);
-		    	$contact = CenterContact::where('center_id',$request['center_id'])->first();
+		    	$contact = CenterContact::where('center_id',$id)->first();
 		    	$contact->update(['center_contact_manager'=>$request['manager'],
 		    					  'center_contact_senior_manager'=>$request['sr_manager'],
 		    					  'center_contact_district_manager'=>$request['ds_manager'],
@@ -187,29 +195,45 @@ class CenterController extends Controller
 		    	return redirect('/Center/'.$id.'/Finance');
     			break;
 
-    		case 'Schedule':
-    			foreach($request->dow as $dow){
-    				$schedule = CenterSchedule::where('center_id',$id)->first();
-    				if($schedule){
+    		case 'Default-Schedule':
+                $schedules = CenterSchedule::where('center_id',$id)->get();
+    			if($schedules->count()>0){
+                    foreach($request->dow as $dow){
+    				    $schedule = $schedules->where('date_of_week_id',$dow+1)->first();
     					$schedule->update([
 		    					  'date_of_week_id'=>$dow+1,
 		    					  'open_time'=>$request['from_tm'][$dow],
 		    					  'closed_time'=>$request['to_tm'][$dow],
-		    					  'day_closed'=>$request['closed'][$dow],
-		    					  'more_hours'=>$request['more'][$dow]]);
-    				}else{
-    					$schedule->create(['center_id'=>$id,
-		    					  'date_of_week_id'=>$dow+1,
-		    					  'open_time'=>$request['from_tm'][$dow],
-		    					  'closed_time'=>$request['to_tm'][$dow],
-		    					  'day_closed'=>$request['closed'][$dow],
-		    					  'more_hours'=>$request['more'][$dow]]);
+		    					  'day_closed'=>isset($request['closed'][$dow])?$request['closed'][$dow]:'off',
+		    					  'more_hours'=>isset($request['more'][$dow])?$request['more'][$dow]:'off']);
     				}
 		    		
     			}
     			
 		    	return redirect('/Center/'.$id.'/Schedule');
     			break;
+
+            case 'Blank-Schedule':
+                $schedules = CenterSchedule::where('center_id',$id)->get();
+                if($schedules->count()>0)
+                    foreach ($schedules as $sch) {
+                        $sch->delete();
+                    }
+                    
+                foreach($request->dow as $dow){
+                    
+                        $schedule = new CenterSchedule;
+                        $schedule->create(['center_id'=>$id,
+                                  'date_of_week_id'=>$dow+1,
+                                  'open_time'=>$request['from_tm'][$dow],
+                                  'closed_time'=>$request['to_tm'][$dow],
+                                  'day_closed'=>isset($request['closed'][$dow])?$request['closed'][$dow]:'off',
+                                  'more_hours'=>isset($request['more'][$dow])?$request['more'][$dow]:'off']);
+                    
+                }
+                
+                return redirect('/Center/'.$id.'/Schedule');
+                break;
 
     		case 'Resources':
     			# code...

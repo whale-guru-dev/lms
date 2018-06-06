@@ -9,6 +9,7 @@ class CenterAccessibility extends Model
     protected $table = 'tb_center_accessibility';
     public $timestamps = false;
 
+
     public function center()
     {
     	return $this->belongsTo('App\Models\Center');

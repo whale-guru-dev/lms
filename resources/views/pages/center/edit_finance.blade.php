@@ -132,7 +132,7 @@
 							<tr>
 								<td>Tax Registration Date</td>
 								<td colspan="4">
-								  <input value="{{$finance->company_info_tax_reg_date}}" name="reg_date" type="date" class="validate">
+								  <input value="{{$finance->company_info_tax_reg_date}}" name="reg_date" class="datepicker">
 								</td>
 
 							</tr>
@@ -230,6 +230,7 @@
 			</div>  
 		</div>
 		<div class="col l2"></div>
+		<button class="btn btn primary" onclick="event.preventDefault();document.getElementById('finance_form').submit();">Save</button>
 	</form>
 	</div>
 

@@ -14,7 +14,8 @@ $(document).ready(function(){
     $('.timepicker').timepicker();
 });
 $(document).ready(function(){
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({ format: 'yyyy-mm-dd' });
+
 });
 
 $('.chips').chips();

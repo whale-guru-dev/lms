@@ -132,7 +132,7 @@
 
                   <div class="prfile-details">
                     <ul>
-                      <li>{{App\Models\User::where('id',$contact->center_contact_manager)->first()->fname.' '.App\Models\User::where('id',$contact->center_contact_manager)->first()->lname}}</li>
+                      <li>{{$contact->center_contact_manager}}</li>
                       <li>Contact Manager</li>
                     </ul>
                   </div>
@@ -145,7 +145,7 @@
 
                   <div class="prfile-details">
                     <ul>
-                      <li>{{App\Models\User::where('id',$contact->center_contact_senior_manager)->first()->fname.' '.App\Models\User::where('id',$contact->center_contact_senior_manager)->first()->lname}}</li>
+                      <li>{{$contact->center_contact_senior_manager}}</li>
                       <li>Senior Manager</li>
                     </ul>
                   </div>
@@ -158,7 +158,7 @@
 
                   <div class="prfile-details">
                     <ul>
-                      <li>{{App\Models\User::where('id',$contact->center_contact_district_manager)->first()->fname.' '.App\Models\User::where('id',$contact->center_contact_district_manager)->first()->lname}}</li>
+                      <li>{{$contact->center_contact_district_manager}}</li>
                       <li>District Manager</li>
                     </ul>
                   </div>
@@ -171,7 +171,7 @@
 
                   <div class="prfile-details">
                     <ul>
-                      <li>{{App\Models\User::where('id',$contact->center_contact_incident_manager)->first()->fname.' '.App\Models\User::where('id',$contact->center_contact_incident_manager)->first()->lname}}</li>
+                      <li>{{$contact->center_contact_incident_manager}}</li>
                       <li>Incident Manager</li>
                     </ul>
                   </div>

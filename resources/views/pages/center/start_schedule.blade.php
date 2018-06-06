@@ -34,7 +34,7 @@
 
     <div class="col s12 l10">  
       <div class="franchise-info-box">
-        <a href="">
+        <a href="{{url('/Center/'.$id.'/Default-Schedule/Edit')}}">
           <div class="single-info z-depth-1">
             <div class="left-icon"></div>
             <ul>
@@ -56,7 +56,7 @@
           </div>
         </a>
 
-        <a href="Schedule/Edit"> 
+        <a href="{{url('/Center/'.$id.'/Blank-Schedule/Edit')}}"> 
           <div class="single-info z-depth-1">
             <div class="left-icon"></div>
             <ul>

@@ -103,23 +103,23 @@
                     <?php $i=0;?>
                     @if(count($schedule)>0)
                   	@foreach($schedule as $sch)
-                    <input type="hidden" name="dow[]" value="<?php echo $i++;?>">
+                    <input type="hidden" name="dow[]" value="<?php echo $i;?>">
                       <div class="single-day">
                           <h5>{{$day[$sch->date_of_week_id-1]}}</h5>
-                          <div class="time-div">  <input type="text" name="from_tm[]"  class="timepicker" value="{{Carbon\Carbon::parse($sch->open_time)->format('g:i A')}}"></div>
+                          <div class="time-div">  <input type="text" name="from_tm[{{$i}}]"  class="timepicker" value="{{Carbon\Carbon::parse($sch->open_time)->format('g:i A')}}"></div>
                           <span>to</span>
-                          <div class="time-div">  <input type="text" name="to_tm[]" class="timepicker" value="{{Carbon\Carbon::parse($sch->closed_time)->format('g:i A')}}"></div>
+                          <div class="time-div">  <input type="text" name="to_tm[{{$i}}]" class="timepicker" value="{{Carbon\Carbon::parse($sch->closed_time)->format('g:i A')}}"></div>
                           
                           <ul>
                               <li>
                               <label>
-                                <input type="checkbox" name="closed[]"  class="filled-in" <?php echo $sch->day_closed == 1?  'checked': ''?> />
+                                <input type="checkbox" name="closed[{{$i}}]"  class="filled-in" <?php echo $sch->day_closed == 'on'?  'checked': ''?> />
                                 <span> day closed</span>
                               </label>
                              </li>
                               <li>
                               <label>
-                                <input type="checkbox" name="more[]" class="filled-in" <?php echo $sch->more_hours == 1?  'checked': ''?> />
+                                <input type="checkbox" name="more[{{$i++}}]" class="filled-in" <?php echo $sch->more_hours == 'on'?  'checked': ''?>  />
                                 <span> more hours</span>
                               </label>
                              </li>
@@ -131,20 +131,20 @@
                     <input type="hidden" name="dow[]" value="<?php echo $ii;?>">
                       <div class="single-day">
                           <h5>{{$day[$ii]}}</h5>
-                          <div class="time-div">  <input type="text" name="from_tm[]"  class="timepicker" value=""></div>
+                          <div class="time-div">  <input type="text" name="from_tm[{{$ii}}]"  class="timepicker" value=""></div>
                           <span>to</span>
-                          <div class="time-div">  <input type="text" name="to_tm[]" class="timepicker" value=""></div>
+                          <div class="time-div">  <input type="text" name="to_tm[{{$ii}}]" class="timepicker" value=""></div>
                           
                           <ul>
                               <li>
                               <label>
-                                <input type="checkbox" name="closed[]"  class="filled-in"  />
+                                <input type="checkbox" name="closed[{{$ii}}]"  class="filled-in"  checked="checked" />
                                 <span> day closed</span>
                               </label>
                              </li>
                               <li>
                               <label>
-                                <input type="checkbox" name="more[]" class="filled-in"  />
+                                <input type="checkbox" name="more[{{$ii}}]" class="filled-in"  checked="checked"/>
                                 <span> more hours</span>
                               </label>
                              </li>
@@ -154,7 +154,7 @@
                     @endif
                   </div>
               </div>
-              
+              <a class="waves-effect waves-light btn-large z-depth-4" href="#" onclick="event.preventDefault();document.getElementById('schedule_form').submit();">Save Schedule</a>
               
               <h5>Regular Trading Hours</h5>
               <a class="waves-effect waves-light btn-large z-depth-4" href="">manage exceptions</a>

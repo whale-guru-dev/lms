@@ -91,6 +91,7 @@
           <div class="sec-area trading-hours">
               <div class="title-box">
                   <h4>Regular Trading Hours</h4>
+                  <div class="icon-edit"><a href="{{'Schedules/Edit'}}"><i class="material-icons dp48">create</i></a></div>
               </div>
               <div class="trading-time-area">
                   <div class="open-close">
@@ -108,13 +109,13 @@
                           <ul>
                               <li>
                               <label>
-                                <input type="checkbox" disabled="" class="filled-in" <?php echo $sch->day_closed == 1?  'checked': ''?> />
+                                <input type="checkbox" disabled="" class="filled-in" <?php echo $sch->day_closed == 'on'?  'checked': ''?> />
                                 <span> day closed</span>
                               </label>
                              </li>
                               <li>
                               <label>
-                                <input type="checkbox" disabled="" class="filled-in" <?php echo $sch->more_hours == 1?  'checked': ''?> />
+                                <input type="checkbox" disabled="" class="filled-in" <?php echo $sch->more_hours == 'on'?  'checked': ''?> />
                                 <span> more hours</span>
                               </label>
                              </li>
