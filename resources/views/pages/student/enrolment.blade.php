@@ -71,13 +71,13 @@
                     <input type="text" class="datepicker">
                     <label>Start Date</label>
                   </div></li>
-                            <li><img src="img/tab_icon_cal.png" alt=""></li>
+                            <li><img src="{{asset('assets/img/tab_icon_cal.png')}}" alt=""></li>
                             <li>
                   <div class="input-field">
                     <input type="text" class="datepicker">
                     <label>End Date</label>
                   </div></li>
-                           <li><img src="img/tab_icon_cal.png" alt=""></li>
+                           <li><img src="{{asset('assets/img/tab_icon_cal.png')}}" alt=""></li>
                             <li>
                       <div class="input-field">
                               <select>
@@ -227,7 +227,7 @@
         </div>
         
                 <div class="inner-top-part">
-                    <img src="img/black_course.png" alt="">
+                    <img src="{{asset('assets/img/black_course.png')}}" alt="">
                     <div class="top-left">
                         <h5>Matthew Budiman</h5>
                         <p>Writting Enrichment - Kellyville</p>
@@ -262,7 +262,7 @@
                                   </table>
                               </div>
                 </div>
-                <div class="exchange-icon btn"><img src="img/switch-icon.png" alt=""></div>
+                <div class="exchange-icon btn"><img src="{{asset('assets/img/switch-icon.png')}}" alt=""></div>
                 <div class="mid-part replacment-b z-depth-1">
                         
                           <div class="title-a">
@@ -1112,7 +1112,7 @@
                <div class="row">
                    <div class="col s12 m6">
                        <ul class="wallet-heading">
-                           <li><img src="img/invoice-blue.png" alt=""></li>
+                           <li><img src="{{asset('assets/img/invoice-blue.png')}}" alt=""></li>
                            <li>Billing Account</li>
                        </ul>
                        <div class="table-profile">
@@ -1128,7 +1128,7 @@
                    <div class="col s12 m6">
                        <div class="outline-box">
                            <div class="left-box-a">
-                               <img src="img/wallet-gray.png" alt="">
+                               <img src="{{asset('assets/img/wallet-gray.png')}}" alt="">
                            </div>
                            <div class="right-box-a">
                                
@@ -1150,7 +1150,7 @@
                  <div class="right-part-a z-depth-1">
                      
                        <ul class="wallet-heading">
-                           <li><img src="img/ammount-blue.png" alt=""></li>
+                           <li><img src="{{asset('assets/img/ammount-blue.png')}}" alt=""></li>
                            <li>Amount to be Billed</li>
                        </ul>
                        
@@ -1177,7 +1177,7 @@
                        
                        <div class="outline-box">
                            <div class="left-box-a">
-                               <img src="img/moneybag-gray.png" alt="">
+                               <img src="{{asset('assets/img/moneybag-gray.png')}}" alt="">
                            </div>
                            <div class="right-box-a">
                            <h3 class="color-blue">$260</h3>
@@ -1186,7 +1186,7 @@
                        </div>
                        <div class="outline-box color-blue">
                            <div class="left-box-a">
-                               <img src="img/moneybag-white.png" alt="">
+                               <img src="{{asset('assets/img/moneybag-white.png')}}" alt="">
                            </div>
                            <div class="right-box-a">
                            <h3 class="color-blue">$286</h3>

@@ -212,7 +212,7 @@
       </div>
         
       <div class="inner-top-part">
-          <img src="img/black_course.png" alt="">
+          <img src="{{asset('assets/img/black_course.png')}}" alt="">
           <div class="top-left">
               <p>Primary 1 (WE-P1)</p>
               <h5>Writing Enrichment <span class="badge-blue">Full EnrolMENT</span></h5>

@@ -174,7 +174,7 @@ $bas = BillingAccount::all();
                           <div class="contact-list">
                               <div class="contact-box">
                                  <div class="profile-pic">
-                                     <img src="img/payment-icon.png" alt="">
+                                     <img src="{{asset('assets/img/payment-icon.png')}}" alt="">
                                  </div>
                                   <div class="prfile-details">
                                       <ul>
@@ -185,7 +185,7 @@ $bas = BillingAccount::all();
                               </div>
                               <div class="contact-box">
                                  <div class="profile-pic">
-                                     <img src="img/fields-icon.png" alt="">
+                                     <img src="{{asset('assets/img/fields-icon.png')}}" alt="">
                                  </div>
                                   <div class="prfile-details">
                                       <ul>
@@ -196,7 +196,7 @@ $bas = BillingAccount::all();
                               </div>
                               <div class="contact-box">
                                  <div class="profile-pic">
-                                     <img src="img/uncommited-icon.png" alt="">
+                                     <img src="{{asset('assets/img/uncommited-icon.png')}}" alt="">
                                  </div>
                                   <div class="prfile-details">
                                       <ul>
@@ -408,8 +408,8 @@ $bas = BillingAccount::all();
         <div class="row">
          <div class="col m6">
          <ul class="date-time">
-             <li><img src="img/modal_cal.png" alt=""> Wednesday, January 31, 2018</li>
-             <li><img src="img/clock.png" alt=""> 10.00 - 12.00  AM</li>
+             <li><img src="{{asset('assets/img/modal_cal.png')}}" alt=""> Wednesday, January 31, 2018</li>
+             <li><img src="{{asset('assets/img/clock.png')}}" alt=""> 10.00 - 12.00  AM</li>
          </ul>
          <div class="table-area">
              <table>
@@ -450,9 +450,9 @@ $bas = BillingAccount::all();
                      <h4>Information</h4>
                      
                      <ul>
-                         <li><img src="img/student_samll.png" alt=""> <div class="right-text">5 <br>Reguler Students</div></li>
-                         <li><img src="img/clock_white.png" alt=""> <div class="right-text">1 <br>Trial Students</div></li>
-                         <li><img src="img/arrow_right_left.png" alt=""> <div class="right-text">1 <br>Replacement Students</div></li>
+                         <li><img src="{{asset('assets/img/student_samll.png')}}" alt=""> <div class="right-text">5 <br>Reguler Students</div></li>
+                         <li><img src="{{asset('assets/img/clock_white.png')}}" alt=""> <div class="right-text">1 <br>Trial Students</div></li>
+                         <li><img src="{{asset('assets/img/arrow_right_left.png')}}" alt=""> <div class="right-text">1 <br>Replacement Students</div></li>
                      </ul>
                  </div>
                   </div>
