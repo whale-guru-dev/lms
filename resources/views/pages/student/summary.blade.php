@@ -131,7 +131,7 @@ $bas = BillingAccount::all();
                       <div class="g-info z-depth-1">
                           <div class="title-a">
                               <h5>Relationships</h5>
-                              <div class="icon-edit"><a href="#relationship-a1" class="modal-trigger"><i class="material-icons dp48">create</i></a></div>
+                              <div class="icon-edit"><a href="#relationship-a1" class="modal-trigger modal-close"><i class="material-icons dp48">create</i></a></div>
                           </div>
                       
                   <div class="inner-part-a">    
@@ -230,7 +230,7 @@ $bas = BillingAccount::all();
                     <div class="col s12 m3">
                       <div class="input-field">
                               <select>
-                                <option value="" disabled selected>Enrolment Type</option>
+                                <option value="" disabled selected>Enrollment Type</option>
                                 <option value="1">options</option>
                                 <option value="2">options</option>
                                 <option value="3">options</option>
@@ -245,7 +245,7 @@ $bas = BillingAccount::all();
                     <div class="profile-info-area z-depth-1">
                         
                           <div class="title-a">
-                              <h5>English Level 3 </h5><span class="badge-blue">Full EnrolMENT</span>
+                              <h5>English Level 3 </h5><span class="badge-blue">Full EnrollMENT</span>
                               <div class="icon-edit"><a href=""><i class="material-icons dp48">settings</i></a>
                                   <ul class="selection-list">
                                      <li><a href="">Replacement Lesson</a></li>
@@ -271,7 +271,7 @@ $bas = BillingAccount::all();
                                           <td>
                                              <ul>
                                               <li>Saturday </li>
-                                              <li><small>02:00 PM - 03:00PM</small></li>
+                                              <li><small>02:00 PM - 03:00 PM</small></li>
                                             </ul>
                                           </td>
                                           <td>Abbie Waterhouse</td>
@@ -296,11 +296,11 @@ $bas = BillingAccount::all();
                     <div class="profile-info-area z-depth-1">
                         
                           <div class="title-a">
-                              <h5>English Level 3 </h5><span class="badge-org">RESERVED EnrolMENT</span>
+                              <h5>English Level 3 </h5><span class="badge-org">RESERVED EnrollMENT</span>
                               <div class="icon-edit"><a href=""><i class="material-icons dp48">settings</i></a>
                               
                                     <ul class="selection-list">
-                                     <li><a href="">Convert to Full Envirolment</a></li>
+                                     <li><a href="">Convert to Full Envrollment</a></li>
                                      <li><a href="">Cancel Reservation</a></li>
                                   </ul>
                               </div>
@@ -346,7 +346,7 @@ $bas = BillingAccount::all();
                     <div class="profile-info-area z-depth-1">
                         
                           <div class="title-a">
-                              <h5>English Level 3 </h5><span class="badge-org">RESERVED EnrolMENT</span>
+                              <h5>English Level 3 </h5><span class="badge-org">RESERVED EnrollMENT</span>
                               <div class="icon-edit"><a href=""><i class="material-icons dp48">settings</i></a>
                               
                                     <ul class="selection-list">
@@ -478,10 +478,10 @@ $bas = BillingAccount::all();
 
       <div class="mid-part">
         <h6>Parents/guardians</h6>
-        <a href="#guardian-a1" class="btn modal-trigger">Add <i class="material-icons dp48">add</i></a>
+        <a href="#personal-a1" class="btn modal-trigger modal-close">Add <i class="material-icons dp48">add</i></a>
         <br>
         <h6>siblings</h6>
-        <a href="#personal-a1" class="btn modal-trigger">Add <i class="material-icons dp48">add</i></a>
+        <a href="#guardian-a1" class="btn modal-trigger modal-close">Add <i class="material-icons dp48">add</i></a>
         <br>
       </div>
     </div>
@@ -556,7 +556,7 @@ $bas = BillingAccount::all();
         </form>
       </div>
 
-      <a href="" class="btn">SEARCH EXISTING</a>
+      <a href="#guardian-a1" class="btn modal-trigger modal-close">SEARCH EXISTING</a>
       <a href="" class="btn">create</a>
     </div>
   </div>
