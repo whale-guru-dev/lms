@@ -33,4 +33,9 @@ class Center extends Model
     {
     	return $this->hasMany('App\Models\CenterSchedule');
     }
+
+    public function student()
+    {
+        return $this->hasMany('App\Models\Student');
+    }
 }

@@ -47,8 +47,16 @@ $bas = BillingAccount::all();
                 </div>
                 <div class="user-more-info">
                     <div class="user-image z-depth-1">
-                        <img src="" alt="">
-                              <div class="icon-edit"><a href=""><i class="material-icons dp48">create</i></a></div>
+                      <form action="" method="POST" enctype="multipart/form-data">
+                        <div class = "file-field input-field">
+                          <div class="btn">
+                            <span><i class="material-icons dp48">create</i></span>
+                            <input type="file">
+                          </div>
+                        </div>
+                        <img src="{{asset('assets/propic/'.$student->student_profile_pic)}}" alt="Profile Picture" width="100%">
+                      </form>
+                      
                     </div>
                     <div class="profile-info-area z-depth-1">
                         

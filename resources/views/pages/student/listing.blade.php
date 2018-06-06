@@ -81,7 +81,7 @@ $status_class = ['status-inactive','status-active'];
 
     <div class="col s12 m8 l9 right-side-area">
 
-      <div class="sub-header">
+    <!--   <div class="sub-header">
         <div class="header-inner">
           <ul>
             <li>
@@ -140,7 +140,7 @@ $status_class = ['status-inactive','status-active'];
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
 
       <div class="schedule-area center-part ">
         <div class="header">
@@ -181,7 +181,7 @@ $status_class = ['status-inactive','status-active'];
                   <td style="text-align: left;">
                     <a href="{{url('/Student/'.$std->id.'/Summary')}}">
                       <div class="avatar-box">
-                        <img src="{{asset('assets/img/pic-1.png')}}" alt="">
+                        <img src="{{asset('assets/propic/mdefault.png')}}" alt="">
                       </div>
                     
                       {{$std->student_surname.' '.$std->student_given_name}}
@@ -491,31 +491,31 @@ $status_class = ['status-inactive','status-active'];
     <div class="modal-bottom-part">
       <h5>Student Detaitls</h5>
 
-      <form action="">
+      <form action="" method="POST">
         <div class="row">
           <div class="col s12 l5">
 
             <div class="input-field">
-              <input id="KnownAs" type="text" class="validate">
+              <input id="KnownAs" type="text" class="validate" name="nickname">
               <label for="KnownAs">Known As</label>
             </div>
 
             <div class="input-field">
-              <input id="first_name" type="text" class="validate">
+              <input id="first_name" type="text" class="validate" name="fName">
               <label for="first_name">First Name</label>
             </div>
 
             <div class="input-field">
-              <input id="Last_name" type="text" class="validate">
+              <input id="Last_name" type="text" class="validate" name="mName">
               <label for="Last_name">Middle Name</label>
             </div>
 
             <div class="input-field">
-              <input id="Last_name" type="text" class="validate">
+              <input id="Last_name" type="text" class="validate" name="lName">
               <label for="Last_name">Last Name</label>
             </div>
 
-            <button class="waves-effect waves-light btn-small">save</button>
+            <button class="waves-effect waves-light btn-small" type="submit">save</button>
 
           </div>
 
