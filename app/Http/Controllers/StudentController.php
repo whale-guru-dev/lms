@@ -138,7 +138,7 @@ class StudentController extends Controller
     {
         if($request){
 
-            for($i = 0 ; $i < count($request['siblingid']) ; $i++){
+            for($i = 0 ; $i < sizeof($request['siblingid']) ; $i++){
                 $sibling = new Sibling;
                 $sibling->student_id = $id;
                 $sibling->self_student_id = $request['siblingid'][$i];
