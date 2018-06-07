@@ -138,11 +138,22 @@ class StudentController extends Controller
     {
         if($request){
 
-            for($i = 0 ; $i < sizeof($request['siblingid']) ; $i++){
+            // for($i = 0 ; $i < sizeof($request['siblingid']) ; $i++){
+            //     $sibling = new Sibling;
+            //     $sibling->student_id = $id;
+            //     $sibling->self_student_id = $request['siblingid'][$i];
+            //     if(Student::find($request['siblingid'][$i])->student_gender == 0)
+            //         $sibling->sibling_type = 0;
+            //     else
+            //         $sibling->sibling_type = 1;
+            //     $sibling->save();
+            // }
+
+            foreach($request['siblingid'] as $sib){
                 $sibling = new Sibling;
                 $sibling->student_id = $id;
-                $sibling->self_student_id = $request['siblingid'][$i];
-                if(Student::find($request['siblingid'][$i])->student_gender == 0)
+                $sibling->self_student_id = $sib;
+                if(Student::find($sib)->student_gender == 0)
                     $sibling->sibling_type = 0;
                 else
                     $sibling->sibling_type = 1;
