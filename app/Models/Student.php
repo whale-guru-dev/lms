@@ -13,11 +13,27 @@ class Student extends Model
 
     public function billingaccount()
     {
-    	return $this->hasOne('App\Models\BillingAccount');
+    	return $this->hasOne('App\Models\BillingAccount','student_billing_account_id');
     }
 
     public function center()
     {
-    	return $this->belongsTo('App\Models\Center');
+    	return $this->hasOne('App\Models\Center','center_id');
+    }
+
+
+    public function parents()
+    {
+    	return $this->belongsToMany('App\Models\Parents','tb_relationship','student_id','relation_id');
+    }
+
+    public function sibling()
+    {
+    	return $this->belongsToMany('App\Models\Student','tb_sibiling','student_id','self_student_id')->withPivot('sibling_type');
+    }
+
+    public function silbing_student()
+    {
+    	return $this->belongsTo('App\Models\Sibling');
     }
 }

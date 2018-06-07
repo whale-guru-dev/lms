@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\BillingAccount;
+use App\Models\Parents;
+use App\Models\ParentStudent;
+use App\Models\Relationship;
+use App\Models\Sibling;
 
 class StudentController extends Controller
 {
@@ -103,6 +107,50 @@ class StudentController extends Controller
                     return redirect('Student/'.$student->id.'/Summary');
                 }
             }
+        }
+    }
+
+    public function newparent($id, Request $request)
+    {
+        
+        if($request){
+            $parent = new Parents;
+            $relationship = new Relationship;
+
+            $parent->parent_type = $request['parent_type'];
+            $parent->fName = $request['fName'];
+            $parent->lName = $request['lName'];
+            $parent->mobile = $request['mobile'];
+            $parent->address = $request['addr'];
+            $parent->email = $request['email'];
+            $parent->save();
+
+            $relationship->student_id = $id;
+            $relationship->classification = 0;
+            $relationship->relation_id = $parent->id;
+            $relationship->save();
+
+            return redirect('Student/'.$id.'/Summary');
+        }
+    }
+
+    public function addsibling($id, Request $request)
+    {
+        if($request){
+
+            for($i = 0 ; $i < count($request['siblingid']) ; $i++){
+                $sibling = new Sibling;
+                $sibling->student_id = $id;
+                $sibling->self_student_id = $request['siblingid'][$i];
+                if(Student::find($request['siblingid'][$i])->student_gender == 0)
+                    $sibling->sibling_type = 0;
+                else
+                    $sibling->sibling_type = 1;
+                $sibling->save();
+            }
+
+            return redirect('Student/'.$id.'/Summary');
+            
         }
     }
 

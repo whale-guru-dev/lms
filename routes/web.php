@@ -52,4 +52,12 @@ Route::group(['prefix'=>'Student'],function(){
 
 	Route::post('/{id}/EditStudent','StudentController@editstudent');
 	Route::post('/{id}/PropicChange','StudentController@changepropic');
+	Route::post('/{id}/NewParent','StudentController@newparent');
+	Route::post('/{id}/AddSibling','StudentController@addsibling');
+});
+
+Route::group(['prefix'=>'Search'],function(){
+
+	Route::post('/Student/{Searchcase}','SearchController@StudentSearch');
+
 });

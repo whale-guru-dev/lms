@@ -2,18 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Sibling extends Model
+class Sibling extends Pivot
 {
-    protected $table = 'tb_sibling';
+    protected $table = 'tb_sibiling';
     public $timestamps = false;
 
     protected $fillable = ['sibling_type','student_id','self_student_id'];
 
-
-    public function student()
-    {
-    	return $this->hasMany('App\Models\Student');
-    }
 }

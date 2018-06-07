@@ -2,27 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Relationship extends Model
+
+class Relationship extends Pivot
 {
     protected $table = 'tb_relationship';
     public $timestamps = false;
 
     protected $fillable = ['student_id','classification','relation_id'];
 
-    public function parent()
-    {
-    	return $this->hasMany('App\Models\Parent');
-    }
-
-    public function sibling()
-    {
-    	return $this->hasMany('App\Models\Sibling');
-    }
-
-    public function student()
-    {
-    	return $this->belongsTo('App\Models\Student');
-    }
 }

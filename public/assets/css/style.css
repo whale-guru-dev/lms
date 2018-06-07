@@ -3788,5 +3788,16 @@ label {
   text-indent: -2.22222e+7px;
   width: 23px;
 }
+
+.upload-btn input[type="file"] {
+  width: 92px;
+  height: 40px;
+  cursor: pointer;
+}
+.btn.upload-btn {
+    float: none;
+    height: auto;
+    line-height: initial;
+}
 /*Page 47 End*/
 

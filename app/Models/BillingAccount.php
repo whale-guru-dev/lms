@@ -11,6 +11,11 @@ class BillingAccount extends Model
 
     public function student()
     {
-    	return $this->hasMany('App\Models\Student');
+    	return $this->belongsTo('App\Models\Student');
+    }
+
+    public function parent()
+    {
+    	return $this->hasOne('App\Models\Parents','billing_account_parent_id');
     }
 }

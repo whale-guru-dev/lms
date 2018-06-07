@@ -4,25 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Parent extends Model
+class Parents extends Model
 {
     protected $table = 'tb_parent';
     public $timestamps = false;
 
     protected $fillable = ['parent_type','student_id','fName','lName','mobile','email','address'];
 
-    public function relationship()
+    public function students()
     {
-    	return $this->belongsTo('App\Models\Relationship');
+    	return $this->belongsToMany('App\Models\Parents','tb_relationship','student_id','relation_id');
     }
 
     public function billingaccount()
     {
-    	return $this->hasOne('App\Models\BillingAccount');
+    	return $this->belongsTo('App\Models\BillingAccount');
     }
 
-    public function student()
-    {
-    	return $this->hasMany('App\Models\Student');
-    }
+
 }

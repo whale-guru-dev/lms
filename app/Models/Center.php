@@ -9,24 +9,24 @@ class Center extends Model
     protected $table = 'tb_center';
     public $timestamps = false;
 
-    public function accessibility()
+    public function usercenteraccessibility()
     {
-    	return $this->hasOne('App\Models\CenterAccessibility');
+    	return $this->belongsToMany('App\Models\UserCenterAccessibility');
     }
 
     public function contact()
     {
-    	return $this->hasOne('App\Models\CenterContact');
+    	return $this->hasOne('App\Models\CenterContact','center_contact_id');
     }
 
     public function finance()
     {
-    	return $this->hasOne('App\Models\CenterFinance');
+    	return $this->hasOne('App\Models\CenterFinance','center_finance_id');
     }
 
     public function summary()
     {
-    	return $this->hasOne('App\Models\CenterSummary');
+    	return $this->hasOne('App\Models\CenterSummary','center_summary_id');
     }
 
     public function schedule()
@@ -36,6 +36,6 @@ class Center extends Model
 
     public function student()
     {
-        return $this->hasMany('App\Models\Student');
+        return $this->belongsTo('App\Models\Student');
     }
 }

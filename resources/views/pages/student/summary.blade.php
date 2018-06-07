@@ -51,7 +51,7 @@ use \Carbon\Carbon;
                       <form action="{{url('/Student/'.$student->id.'/PropicChange')}}" method="POST" enctype="multipart/form-data" id="propic-form">
                         @csrf
                            <div class="icon-edit">
-                            
+
                             <a href="#" onclick="event.preventDefault();document.getElementById('propic-form').submit();" id="image-upload-btn" style="display: none;"><i class="material-icons dp48">save</i></a>
 
                             <input type="file" accept=".png, .jpg, .jpeg" id="image-file-btn" name="propic">
@@ -205,11 +205,11 @@ use \Carbon\Carbon;
                                         <td><a class="btn" href="">Generate</a></td>
                                         <td>
                                           <div class="file-field input-field">
-                                            <div class="btn">
-                                              <span>Upload</span>
-                                              <input type="file">
+                                              <div class="btn upload-btn">
+                                                <span>Upload</span>
+                                                <input type="file">
+                                              </div>
                                             </div>
-                                          </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -246,14 +246,14 @@ use \Carbon\Carbon;
                               <tr>
                                   <td colspan="2">Parents/Guardian</td>
                               </tr>
-                              <tr>
-                                  <td>Mother</td>
-                                 <td>Gabbie Budiman</td>
-                              </tr>
-                              <tr>
-                                  <td>Father</td>
-                                  <td>Geoff Budiman</td>
-                              </tr>
+                              @foreach($student->parents as $parent)
+                                @if($parent->pivot->classification == 0)
+                                <tr>
+                                    <td>{{$parent->parent_type == 0 ? 'Father' : 'Mother'}}</td>
+                                   <td>{{ $parent->fName.' '.$parent->lName}}</td>
+                                </tr>
+                                @endif
+                              @endforeach
                           </table>
                       </div>
                       </div>
@@ -263,14 +263,14 @@ use \Carbon\Carbon;
                               <tr>
                                   <td colspan="2">Siblings</td>
                               </tr>
-                              <tr>
-                                  <td>Brother</td>
-                                 <td>Gabriel Budiman</td>
-                              </tr>
-                              <tr>
-                                  <td>Sister</td>
-                                  <td>Georgie Budiman</td>
-                              </tr>
+                              @foreach($student->sibling as $sibling)
+
+                                <tr>
+                                  <td>{{$sibling->pivot->sibling_type == 0 ? 'Brother' : 'Sister'}}</td>
+                                  <td>{{$sibling->student_given_name.' '.$sibling->student_surname}}</td>
+                                </tr>
+
+                              @endforeach
                           </table>
                       </div>
                       </div>
@@ -595,14 +595,59 @@ use \Carbon\Carbon;
 <!-- Relationship End -->
 
 
-<!-- Add Parent/Guardian -->
+<!-- Add Sibling -->
 
   <!-- Modal Structure -->
   <div id="guardian-a1" class="modal">
     <div class="modal-content">
       <div class="modal-top-part">  
-        <h4>Relationship</h4>
-        <p>personal information</p>
+        <h4>Add Sibling</h4>
+        <p>Find Sibling</p>
+      </div>
+
+      <div class="search-area">
+        <!-- <form action=""> -->
+          <div class="input-field col s6 s12 red-text">
+            <i class="red-text material-icons prefix" style="cursor: pointer;" onclick="searchstudentsibling()">search</i>
+            <input type="text" placeholder="Nickname, Given Name, Surname, School" id="search-sibling-val">
+          </div>
+          
+        <!-- </form> -->
+      </div>
+
+      <div class="info-table-c">
+        <table>
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Date of Birth</th>
+              <th>Name</th>
+              <th>School</th>
+            </tr>
+          </thead>
+          <tbody id="find-student-sibling">
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <form action="{{url('/Student/'.$student->id.'/AddSibling')}}" method="POST" id="add-sibling">
+        @csrf
+        <input type="hidden" name="siblingid" id="siblingid">
+      </form>
+      <a href="#" class="btn" onclick="event.preventDefault();addsibling();">Add</a>
+
+    </div>
+  </div>
+<!-- END SIBLING -->
+
+<!-- Find Parent -->
+
+  <!-- Modal Structure -->
+  <div id="guardian-a2" class="modal">
+    <div class="modal-content">
+      <div class="modal-top-part">  
+        <h4>Add Parent</h4>
+        <p>Find Parent</p>
       </div>
 
       <div class="search-area">
@@ -613,7 +658,7 @@ use \Carbon\Carbon;
       </div>
       
       <div class="info-table-c">
-        <table>
+        <table id="find-parent-student">
           <tr>
             <td>Daniel Aiello</td>
             <td>0474000888</td>
@@ -625,7 +670,9 @@ use \Carbon\Carbon;
       <a href="" class="btn">create new</a>
     </div>
   </div>
+<!-- END SIBLING -->
 
+<!-- Parent Modal -->
   <div id="personal-a1" class="modal">
     <div class="modal-content">
       <div class="modal-top-part">  
@@ -634,39 +681,56 @@ use \Carbon\Carbon;
       </div>
 
       <div class="search-area">
-        <form action="">
+        <form action="{{url('/Student/'.$student->id.'/NewParent')}}" method="POST" id="newparent-form">
+          @csrf
             <div class="input-field">
-            <input id="first_name" class="validate" type="text">
+            <input id="first_name" class="validate" type="text" name="fName" required="">
             <label for="first_name" class="">First Name</label>
           </div>
 
           <div class="input-field">
-            <input id="parent_name" class="validate" type="text">
+            <input id="last_name" class="validate" type="text" name="lName" required="">
             <label for="last_name" class="">Last Name</label>
           </div>
 
           <div class="input-field">
-            <input id="parent_name" class="validate" type="text">
-            <label for="parent_name" class="">Mobile</label>
+            <input id="mobile" class="validate" type="text" name="mobile" required="">
+            <label for="mobile" class="">Mobile</label>
           </div>
 
           <div class="input-field">
-            <input id="parent_name" class="validate" type="text">
-            <label for="parent_name" class="">Email</label>
+            <input id="email" class="validate" type="text" name="email" required="">
+            <label for="email" class="">Email</label>
+          </div>
+
+          <div class="input-field">
+            <input id="addr" class="validate" type="text" name="addr" required="">
+            <label for="addr" class="">Address</label>
           </div>
           
           <div class="input-field">
-            <input id="parent_name" class="validate" type="text">
-            <label for="parent_name" class="">Parent Name</label>
+            <label  class="">Parent Type</label>
+            <br>
+            <p>
+              <label>
+                <input class="with-gap" name="parent_type" type="radio"  value="0" checked="" />
+                <span>Father</span>
+              </label>
+            
+              <label>
+                <input class="with-gap" name="parent_type" type="radio"  value="1" />
+                <span>Mother</span>
+              </label>
+            </p>
           </div>
         </form>
       </div>
 
-      <a href="#guardian-a1" class="btn modal-trigger modal-close">SEARCH EXISTING</a>
-      <a href="" class="btn">create</a>
+      <a href="#guardian-a2" class="btn modal-trigger modal-close">SEARCH EXISTING</a>
+      <a href="" class="btn" onclick="event.preventDefault();document.getElementById('newparent-form').submit();">create</a>
     </div>
   </div>
-
+<!-- END PARENT MODAL -->
 @endsection
 
 @section('add_js')
@@ -698,5 +762,46 @@ use \Carbon\Carbon;
     readURL(this);
     $("#image-upload-btn").show();
   });
+
+  function searchstudentsibling(){
+    var search = $("#search-sibling-val").val();
+    $.ajax({
+      url : '{{url('/Search/Student/Sibling')}}',
+      type : 'POST',
+      data : {
+        "_token" : "{{ csrf_token() }}",
+        'current' : "{{$student->id}}",
+        "query" : search
+      },
+      dataType : 'html',
+      success : function(data){
+        var student = JSON.parse(data)['student'];
+        var searchelement = "";
+        var i = 0;
+
+        student.forEach(function(){
+          searchelement += "<tr><td><p><label><input type=\"checkbox\" class=\"filled-in\" name=\"selStu\" value=\""+student[i]['id']+"\"/><span></span></label></p></td><td>"+student[i]['student_dob']+"</td><td>"+student[i]['student_given_name']+" "+student[i]['student_surname']+"</td><td>"+student[i++]['student_school']+"</td></tr>" ;
+        });
+
+        $("#find-student-sibling").html(searchelement);
+      },
+      error : function(){
+        console.log("error")
+      }
+    });
+  }
+
+  function addsibling(){
+
+    var selected_ids = new Array();
+    $.each($("input[name='selStu']:checked"), function() {
+      selected_ids.push($(this).val());
+    });
+
+    $("#siblingid").val(selected_ids);
+
+    $("#add-sibling").submit()
+
+  }
 </script>
 @endsection

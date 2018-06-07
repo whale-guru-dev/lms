@@ -492,6 +492,7 @@ $status_class = ['status-inactive','status-active'];
       <h5>Student Detaitls</h5>
 
       <form action="{{url('/Student/NewStudent')}}" method="POST">
+        @csrf
         <div class="row">
           <div class="col s12 l5">
 
@@ -514,7 +515,7 @@ $status_class = ['status-inactive','status-active'];
               <label>Gender</label><br>
               <p>
                 <label>
-                  <input class="with-gap" name="gender" type="radio"  value="0" />
+                  <input class="with-gap" name="gender" type="radio"  value="0" checked="" />
                   <span>Male</span>
                 </label>
               

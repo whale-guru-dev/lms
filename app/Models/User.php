@@ -29,4 +29,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function usercenteraccessbility()
+    {
+        return $this->belongsToMany('App\Models\UserCenterAccessibility');
+    }
+
+    public function usercenter()
+    {
+        return $this->belongsToMany('App\Models\Center');
+    }
+
 }
