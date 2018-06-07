@@ -64,14 +64,57 @@ class StudentController extends Controller
             $student->student_school = $request['school'];
             $student->student_contract = isset($request['contract'])?$request['contract']:null;
             $student->student_billing_account_id = $request['billingaccount'];
-            if($request['gender'] == 0){
-                $student->student_profile_pic = 'mdefault.png';
-            }else {
-                $student->student_profile_pic = 'fdefault.png';
+            if($student->student_profile_pic == 'mdefault.png' || $student->student_profile_pic == 'fdefault.png' || $student->student_profile_pic == null){
+                if($request['gender'] == 0){
+                    $student->student_profile_pic = 'mdefault.png';
+                }else {
+                    $student->student_profile_pic = 'fdefault.png';
+                }
             }
+                
             $student->save();
 
             return redirect('Student/'.$student->id.'/Summary');
         }
+    }
+
+    public function changepropic($id, Request $request)
+    {
+        $student = Student::find($id);
+        if($request){
+            if($request->hasFile('propic')){
+                $this->validate($request, [
+                    'propic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+                $profileImage = $request->file('propic');
+
+                if($student->student_profile_pic != 'mdefault.png' && $student->student_profile_pic != 'fdefault.png')
+                    $name = $student->student_profile_pic;
+
+                else 
+                    $name = $this->generateRandomString().'.'.$profileImage->getClientOriginalExtension();
+
+                $student->student_profile_pic = $name;
+
+                
+                $destinationPath = public_path('assets/propic');
+                
+                if($student->save() && $profileImage->move($destinationPath, $name)){
+                    return redirect('Student/'.$student->id.'/Summary');
+                }
+            }
+        }
+    }
+
+
+    public function generateRandomString($length = 10)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }

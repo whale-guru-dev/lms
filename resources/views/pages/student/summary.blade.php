@@ -48,26 +48,23 @@ use \Carbon\Carbon;
                 </div>
                 <div class="user-more-info">
                     <div class="user-image z-depth-1">
-                      <form action="" method="POST" enctype="multipart/form-data">
-
+                      <form action="{{url('/Student/'.$student->id.'/PropicChange')}}" method="POST" enctype="multipart/form-data" id="propic-form">
+                        @csrf
                            <div class="icon-edit">
-                            <input type="file" accept="image/jpeg">
+                            
+                            <a href="#" onclick="event.preventDefault();document.getElementById('propic-form').submit();" id="image-upload-btn" style="display: none;"><i class="material-icons dp48">save</i></a>
+
+                            <input type="file" accept=".png, .jpg, .jpeg" id="image-file-btn" name="propic">
                             <i class="material-icons dp48">create</i>
+
+                            
                           </div>
 
-                          <!-- <button class="btn-small waves-effect waves-light" type="submit" name="action">Submit
-                            <i class="material-icons right">send</i>
-                          </button> -->
-
-
-
-
-                          <img src="{{asset('assets/propic/'.$student->student_profile_pic)}}" alt="Profile Picture" width="100%">
-
-                        
+                          <img src="{{asset('assets/propic/'.$student->student_profile_pic)}}" id="propic-img" alt="Profile Picture" width="100%">
+         
                       </form>
                       
-                    </div>
+                     </div>
                     <div class="profile-info-area z-depth-1" id="view-profile">
                         <div class="title-a">
                             <h5>Profile</h5>
@@ -683,5 +680,23 @@ use \Carbon\Carbon;
     $("#view-profile").show();
     $("#edit-profile").hide();
   }
+
+  function readURL(input) {
+
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#propic-img').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#image-file-btn").change(function() {
+    readURL(this);
+    $("#image-upload-btn").show();
+  });
 </script>
 @endsection

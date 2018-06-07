@@ -3164,9 +3164,10 @@ nav ul a {
     text-align: center;
 }
 .mid-part h6 {
-    color: #4f6b78;
-    font-size: 20px;
-    margin: 30px auto 15px;
+  color: #4f6b78;
+  font-size: 20px;
+  margin: 30px auto 15px;
+  text-transform: uppercase;
 }
 #enrol-a1 .inner-top-part {
   border-bottom: 1px solid #e0e0e0;
@@ -3751,3 +3752,41 @@ nav ul a {
 }
 
 /*Page 44 End*/
+
+/*Page 47*/
+
+
+.range-area .search-box input[type="text"] {
+  width: 90%;
+}
+.range-area .search-box {
+    margin-bottom: 15px;
+}
+.range-title li {
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: sub;
+}
+.range-title h5 {
+    text-transform: uppercase;
+}
+
+.range-area {
+    margin-top: 60px;
+    padding: 20px;
+}
+label {
+  text-transform: uppercase;
+}
+.fixed-width {
+    width: 160px
+}
+.icon-edit > input[type="file"] {
+  cursor: pointer;
+  height: 23px;
+  position: absolute;
+  text-indent: -2.22222e+7px;
+  width: 23px;
+}
+/*Page 47 End*/
+

@@ -51,4 +51,5 @@ Route::group(['prefix'=>'Student'],function(){
 	Route::post('/NewBillingaccount', 'StudentController@newbillingaccount');
 
 	Route::post('/{id}/EditStudent','StudentController@editstudent');
+	Route::post('/{id}/PropicChange','StudentController@changepropic');
 });
