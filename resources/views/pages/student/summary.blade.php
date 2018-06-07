@@ -3,9 +3,9 @@
 @section('content')
 <?php
 $gender = ['Male','Female'];
-use App\Models\BillingAccount;
+
 use \Carbon\Carbon;
-$bas = BillingAccount::all();
+
 ?>
 <div class="secend-nav">
     <div class="row">
@@ -27,6 +27,7 @@ $bas = BillingAccount::all();
         <div class="col s12 m12 l6">
             <div class="user-info">               
                 <div class="inner-top-part">
+                  <div class="arrow-back"><a href="{{url('/Student')}}"><i class="material-icons dp48">arrow_back</i></a></div> 
                     <div class="top-left">
                         <p>{{$student->student_id}}</p>
                         <h5>{{$student->student_surname.' '.$student->student_given_name}} <span class="badge-green">Enrolled</span></h5>
@@ -35,12 +36,12 @@ $bas = BillingAccount::all();
                       
                     <div class="col s12 m3">
                       <div class="input-field">
-                              <select>
-                                <option value="" disabled selected>Action</option>
-                                <option value="1">Enroll as Trial Student in Course</option>
-                                <option value="2">Enroll as Student in Course</option>
-                                <option value="3">Reserve Student in Course </option>
-                              </select>
+                          <select>
+                            <option value="" disabled selected>Action</option>
+                            <option value="1">Enroll as Trial Student in Course</option>
+                            <option value="2">Enroll as Student in Course</option>
+                            <option value="3">Reserve Student in Course </option>
+                          </select>
                       </div>
                      </div>                        
                     </div>
@@ -48,87 +49,187 @@ $bas = BillingAccount::all();
                 <div class="user-more-info">
                     <div class="user-image z-depth-1">
                       <form action="" method="POST" enctype="multipart/form-data">
-                        <div class = "file-field input-field">
-                          <div class="btn">
-                            <span><i class="material-icons dp48">create</i></span>
-                            <input type="file">
+
+                           <div class="icon-edit">
+                            <input type="file" accept="image/jpeg">
+                            <i class="material-icons dp48">create</i>
                           </div>
-                        </div>
-                        <img src="{{asset('assets/propic/'.$student->student_profile_pic)}}" alt="Profile Picture" width="100%">
+
+                          <!-- <button class="btn-small waves-effect waves-light" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                          </button> -->
+
+
+
+
+                          <img src="{{asset('assets/propic/'.$student->student_profile_pic)}}" alt="Profile Picture" width="100%">
+
+                        
                       </form>
                       
                     </div>
-                    <div class="profile-info-area z-depth-1">
-                        
-                          <div class="title-a">
-                              <h5>Profile</h5>
-                              <div class="icon-edit"><a href=""><i class="material-icons dp48">create</i></a></div>
-                          </div>
-                          <div class="inner-part-a">
-                              <div class="table-profile">
-                                  <table>
-                                     <thead>
-                                         <tr>
-                                             <td>Nickname</td>
-                                             <td>{{$student->student_nickname}}</td>
-                                         </tr>
-                                     </thead>   
-                                      <tr>
-                                          <td>Given Names</td>
-                                          <td>{{$student->student_given_name}}</td>
-                                      </tr>
-                                      <tr>
-                                          <td>Surname</td>
-                                          <td>{{$student->student_surname}}</td>
-                                      </tr>
-                                      <tr>
-                                          <td>Gender</td>
-                                          <td>{{$gender[$student->student_gender]}}</td>
-                                      </tr>
-                                      <tr>
-                                          <td>Date of Birth</td>
-                                          <td>{{$student->student_dob}} ({{Carbon::parse($student->student_dob)->age}})</td>
-                                      </tr>
-                                  </table>
-                              </div>
-                          </div>
-                          <div class="inner-part-a">
-                              <div class="table-profile">
-                                  <table>
-                                      <tr>
-                                          <td>Enrolled Since</td>
-                                          <td>{{$student->student_enrolled_since}}</td>
-                                      </tr>
-                                      <tr>
-                                          <td>School</td>  
+                    <div class="profile-info-area z-depth-1" id="view-profile">
+                        <div class="title-a">
+                            <h5>Profile</h5>
+                            <div class="icon-edit"><a href="" onclick="event.preventDefault();editprofile()"><i class="material-icons dp48">create</i></a></div>
+                        </div>
+                        <div class="inner-part-a">
+                            <div class="table-profile">
+                                <table>
+                                   <thead>
+                                       <tr>
+                                           <td>Nickname</td>
+                                           <td>{{$student->student_nickname}}</td>
+                                       </tr>
+                                   </thead>   
+                                    <tr>
+                                        <td>Given Names</td>
+                                        <td>{{$student->student_given_name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Surname</td>
+                                        <td>{{$student->student_surname}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gender</td>
+                                        <td>{{$gender[$student->student_gender]}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date of Birth</td>
+                                        <td>{{$student->student_dob}} ({{Carbon::parse($student->student_dob)->age}})</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="inner-part-a">
+                            <div class="table-profile">
+                                <table>
+                                    <tr>
+                                        <td>Enrolled Since</td>
+                                        <td>{{$student->student_enrolled_since}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>School</td>  
 
-                                          <td>{{$student->student_school}}</td>
-                                      </tr>
-                                      <tr>
-                                          <td>Contract</td>
-                                          <td></td>
-                                      </tr>
-                                      <tr>
-                                          <td><a class="btn" href="">Generate</a></td>
-                                          <td>
-                                      <form action="#">
-                                        <div class="file-field input-field">
-                                          <div class="btn">
-                                            <span>Upload</span>
-                                            <input type="file">
-                                          </div>
+                                        <td>{{$student->student_school}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Contract</td>
+                                        <td></td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td><a class="btn" href="">Generate</a></td>
+                                        <td>
+                                    <form action="#">
+                                      <div class="file-field input-field">
+                                        <div class="btn">
+                                          <span>Upload</span>
+                                          <input type="file">
                                         </div>
-                                      </form>
-                                    </td>
-                                      </tr>
-                                      <tr>
-                                          <td>Billing Account</td>
-                                          <td>{{$bas->where('id',$student->student_billing_account_id)->first()->billing_account_name}}</td>
-                                      </tr>
-                                  </table>
-                              </div>
-                          </div>
-                          
+                                      </div>
+                                    </form>
+                                  </td>
+                                    </tr> -->
+                                    <tr>
+                                        <td>Billing Account</td>
+                                        <td>{{$bas->where('id',$student->student_billing_account_id)->first()->billing_account_name}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-info-area z-depth-1" id="edit-profile" style="display: none;">
+                      <form action="{{url('/Student/'.$student->id.'/EditStudent')}}" method="POST" id="edit-profile-form"> 
+                                @csrf
+                        <div class="title-a">
+                            <h5>Edit Profile</h5>
+                            <div class="icon-edit">
+                              <a href="#" onclick="event.preventDefault();back();"><i class="material-icons dp48">create</i></a>
+
+                              <a href="#" onclick="event.preventDefault();document.getElementById('edit-profile-form').submit();"><i class="material-icons dp48">save</i></a></div>
+                        </div>
+                        <div class="inner-part-a">
+                            <div class="table-profile">
+                              
+                                <table>
+                                   <thead>
+                                       <tr>
+                                           <td>Nickname</td>
+                                           <td><input type="text" name="nickname" value="{{$student->student_nickname}}"></td>
+                                       </tr>
+                                   </thead>   
+                                    <tr>
+                                        <td>Given Names</td>
+                                        <td><input type="text" name="gName" value="{{$student->student_given_name}}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Surname</td>
+                                        <td><input type="text" name="sName" value="{{$student->student_surname}}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gender</td>
+                                        <td>
+                                          <p>
+                                            <label>
+                                              <input class="with-gap" name="gender" type="radio"  value="0" <?php echo $student->student_gender==0?"checked":'';?>/>
+                                              <span>Male</span>
+                                            </label>
+                                          
+                                            <label>
+                                              <input class="with-gap" name="gender" type="radio"  value="1" <?php echo $student->student_gender==1?"checked":'';?>/>
+                                              <span>Female</span>
+                                            </label>
+                                          </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date of Birth</td>
+                                        <td><input name="dob" class="datepicker" value="{{$student->student_dob}}"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="inner-part-a">
+                            <div class="table-profile">
+                                <table>
+                                    <tr>
+                                        <td>Enrolled Since</td>
+                                        <td><input name="enrolled_since" class="datepicker"  value="{{$student->student_enrolled_since}}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>School</td>  
+                                        <td><input type="text" name="school" value="{{$student->student_school}}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Contract</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a class="btn" href="">Generate</a></td>
+                                        <td>
+                                          <div class="file-field input-field">
+                                            <div class="btn">
+                                              <span>Upload</span>
+                                              <input type="file">
+                                            </div>
+                                          </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Billing Account</td>
+                                        <td>
+                                          <select name="billingaccount">
+                                            <option value="" disabled  >Billing Accounts</option>
+                                            @foreach($bas as $ba)
+                                            <option value="{{$ba->id}}" <?php echo $student->student_billing_account_id == $ba->id? 'selected':'';?>>{{$ba->billing_account_name}}</option>
+                                            @endforeach
+                                          </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                      </form>
                     </div>
                 </div>
                 
@@ -227,22 +328,22 @@ $bas = BillingAccount::all();
                     
                     <div class="col s12 m3">
                       <div class="input-field">
-                              <select>
-                                <option value="" disabled selected>Course Type</option>
-                                <option value="1">options</option>
-                                <option value="2">options</option>
-                                <option value="3">options</option>
-                              </select>
+                        <select>
+                          <option value="" disabled selected>Course Type</option>
+                          <option value="1">options</option>
+                          <option value="2">options</option>
+                          <option value="3">options</option>
+                        </select>
                       </div>
                      </div>
                     <div class="col s12 m3">
                       <div class="input-field">
-                              <select>
-                                <option value="" disabled selected>Enrollment Type</option>
-                                <option value="1">options</option>
-                                <option value="2">options</option>
-                                <option value="3">options</option>
-                              </select>
+                        <select>
+                          <option value="" disabled selected>Enrollment Type</option>
+                          <option value="1">options</option>
+                          <option value="2">options</option>
+                          <option value="3">options</option>
+                        </select>
                       </div>
                      </div>
                 </div>
@@ -569,4 +670,18 @@ $bas = BillingAccount::all();
     </div>
   </div>
 
+@endsection
+
+@section('add_js')
+<script type="text/javascript">
+  function editprofile(){
+    $("#view-profile").hide();
+    $("#edit-profile").show();
+  }
+
+  function back(){
+    $("#view-profile").show();
+    $("#edit-profile").hide();
+  }
+</script>
 @endsection

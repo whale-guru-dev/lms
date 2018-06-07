@@ -22,7 +22,7 @@
         <div class="col s12">
                       
                 <div class="inner-top-part">
-                   <div class="arrow-back"><a href=""><i class="material-icons dp48">arrow_back</i></a></div> 
+                   <div class="arrow-back"><a href="{{url('/Student')}}"><i class="material-icons dp48">arrow_back</i></a></div> 
                     <div class="top-left">
                         <p>456234789</p>
                         <h5>Matthew Budiman</h5>

@@ -181,7 +181,7 @@ $status_class = ['status-inactive','status-active'];
                   <td style="text-align: left;">
                     <a href="{{url('/Student/'.$std->id.'/Summary')}}">
                       <div class="avatar-box">
-                        <img src="{{asset('assets/propic/mdefault.png')}}" alt="">
+                        <img src="{{asset('assets/propic/'.$std->student_profile_pic)}}" alt="">
                       </div>
                     
                       {{$std->student_surname.' '.$std->student_given_name}}
@@ -189,7 +189,7 @@ $status_class = ['status-inactive','status-active'];
                   </td>
                   <td>{{$std->student_dob}} <sub>{{Carbon::parse($std->student_dob)->age}} y/o</sub></td>
                   <td>{{$centers->where('id',$std->center_id)->first()->center_name}}</td>
-                  <td>{{$std->student_enrolled_since}} <sub>2 yr 10 mo</sub></td>
+                  <td>{{$std->student_enrolled_since}} <sub>{{Carbon::parse($std->student_enrolled_since)->diff(Carbon::now())->format('%y Year, %m Months')}}</sub></td>
                   <td>{{$std->student_id}}</td>
                   <td><div class="{{$status_class[$std->student_status]}}"></div> {{$status[$std->student_status]}}</td>
                 </tr>
@@ -491,7 +491,7 @@ $status_class = ['status-inactive','status-active'];
     <div class="modal-bottom-part">
       <h5>Student Detaitls</h5>
 
-      <form action="" method="POST">
+      <form action="{{url('/Student/NewStudent')}}" method="POST">
         <div class="row">
           <div class="col s12 l5">
 
@@ -501,18 +501,28 @@ $status_class = ['status-inactive','status-active'];
             </div>
 
             <div class="input-field">
-              <input id="first_name" type="text" class="validate" name="fName">
-              <label for="first_name">First Name</label>
+              <input id="first_name" type="text" class="validate" name="gName">
+              <label for="first_name">Given Name</label>
             </div>
 
             <div class="input-field">
-              <input id="Last_name" type="text" class="validate" name="mName">
-              <label for="Last_name">Middle Name</label>
+              <input id="Last_name" type="text" class="validate" name="sName">
+              <label for="Last_name">Surname</label>
             </div>
 
             <div class="input-field">
-              <input id="Last_name" type="text" class="validate" name="lName">
-              <label for="Last_name">Last Name</label>
+              <label>Gender</label><br>
+              <p>
+                <label>
+                  <input class="with-gap" name="gender" type="radio"  value="0" />
+                  <span>Male</span>
+                </label>
+              
+                <label>
+                  <input class="with-gap" name="gender" type="radio"  value="1"/>
+                  <span>Female</span>
+                </label>
+              </p>
             </div>
 
             <button class="waves-effect waves-light btn-small" type="submit">save</button>
