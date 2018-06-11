@@ -5,9 +5,9 @@
 <div class="secend-nav">
     <div class="row">
         <ul>
-            <li><a href="{{url('/Student/'.$student->id.'/Summary')}}"><span class="nav-icon"></span> Summary</a></li>
-            <li><a href="{{url('/Student/'.$student->id.'/Class')}}"><span class="nav-icon"></span> Class</a></li>
-            <li><a href="{{url('/Student/'.$student->id.'/Enrollment')}}"><span class="nav-icon"></span> Enrolment</a></li>
+            <li><a href="{{url('/'.$centername.'/Student/'.$student->id.'/Summary')}}"><span class="nav-icon"></span> Summary</a></li>
+            <li><a href="{{url('/'.$centername.'/Student/'.$student->id.'/Class')}}"><span class="nav-icon"></span> Class</a></li>
+            <li><a href="{{url('/'.$centername.'/Student/'.$student->id.'/Enrollment')}}"><span class="nav-icon"></span> Enrolment</a></li>
             <li><a href=""><span class="nav-icon"></span> Communication</a></li>
             <li><a href=""><span class="nav-icon"></span> Finance</a></li>
             <li><a href=""><span class="nav-icon"></span> Log</a></li>
@@ -22,7 +22,7 @@
           <div class="col s12">
                         
               <div class="inner-top-part">
-                <div class="arrow-back"><a href="{{url('/Student')}}"><i class="material-icons dp48">arrow_back</i></a></div> 
+                <div class="arrow-back"><a href="{{url('/'.$centername.'/Student')}}"><i class="material-icons dp48">arrow_back</i></a></div> 
                   <div class="top-left">
                       <p>456234789</p>
                       <h5>Matthew Budiman <span class="badge-green">Enrolled</span></h5>

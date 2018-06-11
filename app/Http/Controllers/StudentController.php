@@ -19,41 +19,41 @@ class StudentController extends Controller
         $this->middleware('auth');
     } 
     
-    public function index()
+    public function index($centername)
     {
-        $user = Auth::user();
-        $center = $user->center->first();
-    	return redirect('/Student/'.$center->center_name);
+        $center = Center::where('center_name',$centername)->first();
+    	$students = Student::where('center_id', $center->id)->get();
+        return view('pages.student.listing',['students' => $students,'center_id'=>$center->id,'centername'=>$centername,'module'=>'Student']);
     }
 
-    public function summary($id)
+    public function summary($centername,$id)
     {
         $student = Student::where('id', $id)->first();
         $bas = BillingAccount::all();
-    	return view('pages.student.summary',['student' => $student,'bas'=>$bas]);
+    	return view('pages.student.summary',['student' => $student,'bas'=>$bas,'centername'=>$centername,'module'=>'Student']);
     }
 
-    public function classes($id)
+    public function classes($centername,$id)
     {
         $student = Student::where('id', $id)->first();
         
-    	return view('pages.student.classes',['student' => $student]);
+    	return view('pages.student.classes',['student' => $student,'centername'=>$centername,'module'=>'Student']);
     }
 
-    public function enrolment($id)
+    public function enrolment($centername,$id)
     {
         $student = Student::where('id', $id)->first();
-        return view('pages.student.enrolment',['student' => $student]);
+        return view('pages.student.enrolment',['student' => $student,'centername'=>$centername,'module'=>'Student']);
     }
 
-    public function std_on_center($centername)
-    {
-        $center = Center::where('center_name',$centername)->first();
-        $students = Student::where('center_id', $center->id)->get();
-        return view('pages.student.listing',['students' => $students,'center_id'=>$center->id]);
-    }
+    // public function std_on_center($centername)
+    // {
+    //     $center = Center::where('center_name',$centername)->first();
+    //     $students = Student::where('center_id', $center->id)->get();
+    //     return view('pages.student.listing',['students' => $students,'center_id'=>$center->id]);
+    // }
 
-    public function newstudent($id, Request $request)
+    public function newstudent($centername, $id, Request $request)
     {
         if($request){
 
@@ -98,11 +98,11 @@ class StudentController extends Controller
                     $relationship->relation_id = $parent->id;
                 $relationship->save();
             }
-            return redirect('/Student');
+            return redirect('/'.$centername.'/Student');
         }
     }
 
-    public function editstudent($id, Request $request)
+    public function editstudent($centername,$id, Request $request)
     {
         if($request){
             $student = Student::find($id);
@@ -125,11 +125,11 @@ class StudentController extends Controller
                 
             $student->save();
 
-            return redirect('Student/'.$student->id.'/Summary');
+            return redirect('/'.$centername.'/Student/'.$student->id.'/Summary');
         }
     }
 
-    public function changepropic($id, Request $request)
+    public function changepropic($centername,$id, Request $request)
     {
         $student = Student::find($id);
         if($request){
@@ -151,13 +151,13 @@ class StudentController extends Controller
                 $destinationPath = public_path('assets/propic');
                 
                 if($student->save() && $profileImage->move($destinationPath, $name)){
-                    return redirect('Student/'.$student->id.'/Summary');
+                    return redirect('/'.$centername.'/Student/'.$student->id.'/Summary');
                 }
             }
         }
     }
 
-    public function newparent($id, Request $request)
+    public function newparent($centername, $id, Request $request)
     {
         
         if($request){
@@ -177,11 +177,11 @@ class StudentController extends Controller
             $relationship->relation_id = $parent->id;
             $relationship->save();
 
-            return redirect('Student/'.$id.'/Summary');
+            return redirect('/'.$centername.'/Student/'.$id.'/Summary');
         }
     }
 
-    public function addparent($id, Request $request)
+    public function addparent($centername, $id, Request $request)
     {
         if($request){
             if(is_array($request['parentid']))
@@ -200,12 +200,12 @@ class StudentController extends Controller
                 $relationship->save();
             }
 
-            return redirect('Student/'.$id.'/Summary');
+            return redirect('/'.$centername.'/Student/'.$id.'/Summary');
             
         }
     }
 
-    public function addsibling($id, Request $request)
+    public function addsibling($centername, $id, Request $request)
     {
         if($request){
             if(is_array($request['siblingid']))
@@ -230,7 +230,7 @@ class StudentController extends Controller
                 $sibling->save();
             }
 
-            return redirect('Student/'.$id.'/Summary');
+            return redirect('/'.$centername.'/Student/'.$id.'/Summary');
             
         }
     }

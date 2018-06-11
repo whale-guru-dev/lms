@@ -10,9 +10,9 @@ use \Carbon\Carbon;
 <div class="secend-nav">
     <div class="row">
         <ul>
-            <li><a href="{{url('/Student/'.$student->id.'/Summary')}}"><span class="nav-icon"></span> Summary</a></li>
-            <li><a href="{{url('/Student/'.$student->id.'/Class')}}"><span class="nav-icon"></span> Class</a></li>
-            <li><a href="{{url('/Student/'.$student->id.'/Enrollment')}}"><span class="nav-icon"></span> Enrolment</a></li>
+            <li><a href="{{url('/'.$centername.'/Student/'.$student->id.'/Summary')}}"><span class="nav-icon"></span> Summary</a></li>
+            <li><a href="{{url('/'.$centername.'/Student/'.$student->id.'/Class')}}"><span class="nav-icon"></span> Class</a></li>
+            <li><a href="{{url('/'.$centername.'/Student/'.$student->id.'/Enrollment')}}"><span class="nav-icon"></span> Enrolment</a></li>
             <li><a href=""><span class="nav-icon"></span> Communication</a></li>
             <li><a href=""><span class="nav-icon"></span> Finance</a></li>
             <li><a href=""><span class="nav-icon"></span> Log</a></li>
@@ -27,7 +27,7 @@ use \Carbon\Carbon;
         <div class="col s12 m12 l6">
             <div class="user-info">               
                 <div class="inner-top-part">
-                  <div class="arrow-back"><a href="{{url('/Student')}}"><i class="material-icons dp48">arrow_back</i></a></div> 
+                  <div class="arrow-back"><a href="{{url('/'.$centername.'/Student')}}"><i class="material-icons dp48">arrow_back</i></a></div> 
                     <div class="top-left">
                         <p>{{$student->student_id}}</p>
                         <h5>{{$student->student_surname.' '.$student->student_given_name}} <span class="badge-green">Enrolled</span></h5>
@@ -48,7 +48,7 @@ use \Carbon\Carbon;
                 </div>
                 <div class="user-more-info">
                     <div class="user-image z-depth-1">
-                      <form action="{{url('/Student/'.$student->id.'/PropicChange')}}" method="POST" enctype="multipart/form-data" id="propic-form">
+                      <form action="{{url('/'.$centername.'/Student/'.$student->id.'/PropicChange')}}" method="POST" enctype="multipart/form-data" id="propic-form">
                         @csrf
                            <div class="icon-edit">
 
@@ -134,7 +134,7 @@ use \Carbon\Carbon;
                         </div>
                     </div>
                     <div class="profile-info-area z-depth-1" id="edit-profile" style="display: none;">
-                      <form action="{{url('/Student/'.$student->id.'/EditStudent')}}" method="POST" id="edit-profile-form"> 
+                      <form action="{{url('/'.$centername.'/Student/'.$student->id.'/EditStudent')}}" method="POST" id="edit-profile-form"> 
                                 @csrf
                         <div class="title-a">
                             <h5>Edit Profile</h5>
@@ -592,8 +592,8 @@ use \Carbon\Carbon;
 
       <div class="search-area">
         <!-- <form action=""> -->
-          <div class="input-field col s6 s12 red-text">
-            <i class="red-text material-icons prefix" style="cursor: pointer;" onclick="searchstudentsibling()">search</i>
+          <div class="input-field col s6 s12 blue-text">
+            <i class="blue-text material-icons prefix" style="cursor: pointer;" onclick="searchstudentsibling()">search</i>
             <input type="text" placeholder="Nickname, Given Name, Surname, School" id="search-sibling-val">
           </div>
           
@@ -616,7 +616,7 @@ use \Carbon\Carbon;
         </table>
       </div>
       <br>
-      <form action="{{url('/Student/'.$student->id.'/AddSibling')}}" method="POST" id="add-sibling">
+      <form action="{{url('/'.$centername.'/Student/'.$student->id.'/AddSibling')}}" method="POST" id="add-sibling">
         @csrf
         <input type="hidden" name="siblingid" id="siblingid">
       </form>
@@ -638,8 +638,8 @@ use \Carbon\Carbon;
 
       <div class="search-area">
 
-        <div class="input-field col s6 s12 red-text">
-          <i class="red-text material-icons prefix" style="cursor: pointer;" onclick="searchstudentparent()">search</i>
+        <div class="input-field col s6 s12 blue-text">
+          <i class="blue-text material-icons prefix" style="cursor: pointer;" onclick="searchstudentparent()">search</i>
           <input type="text" placeholder="First Name, Last Name, Mobile, Email" id="search-parent-val">
         </div>
       </div>
@@ -659,7 +659,7 @@ use \Carbon\Carbon;
           </tbody>
         </table>
       </div>
-      <form action="{{url('/Student/'.$student->id.'/AddParent')}}" method="POST" id="add-parent">
+      <form action="{{url('/'.$centername.'/Student/'.$student->id.'/AddParent')}}" method="POST" id="add-parent">
         @csrf
         <input type="hidden" name="parentid" id="parentid">
       </form>
@@ -672,12 +672,12 @@ use \Carbon\Carbon;
   <div id="personal-a1" class="modal">
     <div class="modal-content">
       <div class="modal-top-part">  
-        <h4>Relationship</h4>
+        <h4>Add Parent</h4>
         <p>personal information</p>
       </div>
 
       <div class="search-area">
-        <form action="{{url('/Student/'.$student->id.'/NewParent')}}" method="POST" id="newparent-form">
+        <form action="{{url('/'.$centername.'/Student/'.$student->id.'/NewParent')}}" method="POST" id="newparent-form">
           @csrf
           <div class="input-field">
             <input id="first_name" class="validate" type="text" name="fName" required="">

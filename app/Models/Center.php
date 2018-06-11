@@ -11,7 +11,7 @@ class Center extends Model
 
     public function user()
     {
-    	return $this->belongsToMany('App\Models\User','tb_user_center_accessibility','user_id','center_id');
+    	return $this->belongsToMany('App\Models\User','tb_user_center_accessibility','user_id','center_id')->withPivot('center_accessibility_id');
     }
 
     public function contact()

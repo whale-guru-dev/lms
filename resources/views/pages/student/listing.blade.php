@@ -57,9 +57,7 @@ $status_class = ['status-inactive','status-active'];
               <span>Enrolment Period</span>
             </label>
           </p>  
-        </div>  
 
-        <div class="bttom-filter-area">
           <p>
             <label>
               <input type="checkbox" class="filled-in" />
@@ -67,9 +65,12 @@ $status_class = ['status-inactive','status-active'];
             </label>
           </p>
 
+        </div>  
+
+        <div class="bttom-filter-area">
           <button data-target="modal-filters" class="modal-trigger modal-button">Advanced Filters <i class="material-icons dp48">sort</i></button>
           <button data-target="modal-other-center" class="modal-trigger modal-button">Search other centre <i class="material-icons dp48">sort</i></button>
-          <button data-target="modal-new-student" class="modal-trigger modal-button">New Student <i class="material-icons dp48">sort</i></button>
+          <!-- <button data-target="modal-new-student" class="modal-trigger modal-button">New Student <i class="material-icons dp48">sort</i></button> -->
         </div>
       </div>
     </div>
@@ -154,7 +155,8 @@ $status_class = ['status-inactive','status-active'];
 
           <div class="col s12 m2">
             <div class="print-btn input-field">
-              <button>New Students <i class="material-icons dp48">add</i></button>
+              <button data-target="modal-new-student" class="modal-trigger modal-button">New Students <i class="material-icons dp48">add</i></button>
+              
             </div>
           </div>
         </div>
@@ -176,24 +178,26 @@ $status_class = ['status-inactive','status-active'];
             </thead>
 
             <tbody>
-              @foreach($students as $std)
-                <tr>
-                  <td style="text-align: left;">
-                    <a href="{{url('/Student/'.$std->id.'/Summary')}}">
-                      <div class="avatar-box">
-                        <img src="{{asset('assets/propic/'.$std->student_profile_pic)}}" alt="">
-                      </div>
-                    
-                      {{$std->student_full_name}}
-                    </a>
-                  </td>
-                  <td>{{$std->student_dob}} <sub>{{Carbon::parse($std->student_dob)->age}} y/o</sub></td>
-                  <td>{{$centers->where('id',$std->center_id)->first()->center_name}}</td>
-                  <td>{{$std->student_enrolled_since}} <sub>{{Carbon::parse($std->student_enrolled_since)->diff(Carbon::now())->format('%y Year, %m Months')}}</sub></td>
-                  <td>{{$std->student_id}}</td>
-                  <td><div class="{{$status_class[$std->student_status]}}"></div> {{$status[$std->student_status]}}</td>
-                </tr>
-              @endforeach
+              @if($students->count()>0)
+                @foreach($students as $std)
+                  <tr>
+                    <td style="text-align: left;">
+                      <a href="{{url('/'.$centername.'/Student/'.$std->id.'/Summary')}}">
+                        <div class="avatar-box">
+                          <img src="{{asset('assets/propic/'.$std->student_profile_pic)}}" alt="">
+                        </div>
+                      
+                        {{$std->student_full_name}}
+                      </a>
+                    </td>
+                    <td>{{$std->student_dob}} <sub>{{Carbon::parse($std->student_dob)->age}} y/o</sub></td>
+                    <td>{{$centers->where('id',$std->center_id)->first()->center_name}}</td>
+                    <td>{{$std->student_enrolled_since}} <sub>{{Carbon::parse($std->student_enrolled_since)->diff(Carbon::now())->format('%y Year, %m Months')}}</sub></td>
+                    <td>{{$std->student_id}}</td>
+                    <td><div class="{{$status_class[$std->student_status]}}"></div> {{$status[$std->student_status]}}</td>
+                  </tr>
+                @endforeach
+              @endif
             </tbody>
           </table>
         </div>
@@ -486,7 +490,7 @@ $status_class = ['status-inactive','status-active'];
     <div class="modal-bottom-part">
       <h5>Student Details</h5>
 
-      <form action="{{url('/Student/'.$center_id.'/NewStudent')}}" method="POST">
+      <form action="{{url('/'.$centername.'/Student/'.$center_id.'/NewStudent')}}" method="POST">
         @csrf
         <div class="row">
           <div class="col s12 l5">
@@ -553,8 +557,8 @@ $status_class = ['status-inactive','status-active'];
               <div id="ba_fields_2" style="display: none;">
                 <div class="search-area">
                   <!-- <form action=""> -->
-                    <div class="input-field col s6 s12 red-text">
-                      <i class="red-text material-icons prefix" style="cursor: pointer;" onclick="searchbillingaccount()">search</i>
+                    <div class="input-field col s6 s12 blue-text">
+                      <i class="blue-text material-icons prefix" style="cursor: pointer;" onclick="searchbillingaccount()">search</i>
                       <input type="text" placeholder="First Name, Last Name, Email, Mobile" id="search-ba-val">
                     </div>
                     

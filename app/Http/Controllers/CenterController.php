@@ -26,7 +26,8 @@ class CenterController extends Controller
     
     public function index()
     {
-    	return view('pages.center');
+        $module = 'Center';
+    	return view('pages.center',['module'=>$module]);
     }
 
     public function center($id)
@@ -38,26 +39,26 @@ class CenterController extends Controller
     public function subpage($id, $subpage)
     {
     	$center = Center::find($id);
-    	
+    	$module = 'Center';
     	if($center){
     		switch ($subpage) {
 	    		case 'Summary':
 	    			$summary = CenterSummary::where('center_id',$id)->first();
 	    			$contact = CenterContact::where('center_id',$id)->first();
-	    			return view('pages.center.summary',['id'=>$id,'summary'=>$summary,'contact'=>$contact]);
+	    			return view('pages.center.summary',['id'=>$id,'summary'=>$summary,'contact'=>$contact,'module'=>$module]);
 	    			break;
 
 	    		case 'Finance':
 	    			$finance = CenterFinance::where('center_id',$id)->first();
-	    			return view('pages.center.finance',['id'=>$id,'finance'=>$finance]);
+	    			return view('pages.center.finance',['id'=>$id,'finance'=>$finance,'module'=>$module]);
 	    			break;
 
 	    		case 'Schedule':
 	    			$schedule = CenterSchedule::where('center_id',$id)->get();
 	    			if(count($schedule)>0)
-	    				return view('pages.center.schedule',['id'=>$id,'schedule'=>$schedule]);
+	    				return view('pages.center.schedule',['id'=>$id,'schedule'=>$schedule,'module'=>$module]);
 	    			else
-	    				return view('pages.center.start_schedule',['id'=>$id]);
+	    				return view('pages.center.start_schedule',['id'=>$id,'module'=>$module]);
 	    			break;
 
 	    		case 'Resources':
@@ -102,7 +103,8 @@ class CenterController extends Controller
 
     	$summary = CenterSummary::where('center_id',$center->id)->first();
     	$contact = CenterContact::where('center_id',$center->id)->first();
-    	return view('pages.center.summary',['summary'=>$summary,'contact'=>$contact]);
+        $module = 'Center';
+    	return view('pages.center.summary',['summary'=>$summary,'contact'=>$contact,'module'=>$module]);
 
 
     }
@@ -110,17 +112,18 @@ class CenterController extends Controller
     public function editsubpageview($id,$subpage)
     {
     	$center = Center::find($id);
+        $module = 'Center';
     	if($center){
     		switch ($subpage) {
 	    		case 'Summary':
 	    			$summary = CenterSummary::where('center_id',$id)->first();
 	    			$contact = CenterContact::where('center_id',$id)->first();
-	    			return view('pages.center.edit_summary',['id'=>$id,'summary'=>$summary,'contact'=>$contact]);
+	    			return view('pages.center.edit_summary',['id'=>$id,'summary'=>$summary,'contact'=>$contact,'module'=>$module]);
 	    			break;
 
 	    		case 'Finance':
 	    			$finance = CenterFinance::where('center_id',$id)->first();
-	    			return view('pages.center.edit_finance',['id'=>$id,'finance'=>$finance]);
+	    			return view('pages.center.edit_finance',['id'=>$id,'finance'=>$finance,'module'=>$module]);
 	    			break;
 
                 case 'Schedules':
@@ -128,12 +131,12 @@ class CenterController extends Controller
 
 	    		case 'Default-Schedule':
 	    			$schedule = CenterSchedule::where('center_id',$id)->get();
-	    			return view('pages.center.edit_schedule',['id'=>$id,'schedule'=>$schedule]);
+	    			return view('pages.center.edit_schedule',['id'=>$id,'schedule'=>$schedule,'module'=>$module]);
 	    			break;
 
                 case 'Blank-Schedule':
                     $schedule = [];
-                    return view('pages.center.edit_schedule',['id'=>$id,'schedule'=>$schedule]);
+                    return view('pages.center.edit_schedule',['id'=>$id,'schedule'=>$schedule,'module'=>$module]);
                     break;
 
 	    		case 'Resources':
@@ -250,13 +253,14 @@ class CenterController extends Controller
 
     public function masterfrances($mf_id)
     {
-
-    	return view('pages.center.masterfrances');
+        $module = 'Center';
+    	return view('pages.center.masterfrances',['module'=>$module]);
     }
 
     public function licenseholder($mf_id,$lh_id)
     {
-    	return view('pages.center.licenseholder');
+        $module = 'Center';
+    	return view('pages.center.licenseholder',['module'=>$module]);
     }
 
 }

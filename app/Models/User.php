@@ -37,7 +37,7 @@ class User extends Authenticatable
 
     public function center()
     {
-        return $this->belongsToMany('App\Models\Center','tb_user_center_accessibility','user_id','center_id');
+        return $this->belongsToMany('App\Models\Center','tb_user_center_accessibility','user_id','center_id')->withPivot('center_accessibility_id');
     }
 
 }
