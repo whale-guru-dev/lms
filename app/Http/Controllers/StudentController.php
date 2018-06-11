@@ -61,6 +61,7 @@ class StudentController extends Controller
             $student->student_nickname = $request['nickname'];
             $student->student_full_name = $request['fullName'];
             $student->student_profile_pic = 'mdefault.png';
+            $student->student_id = str_pad(Student::count()+1, 8, '0', STR_PAD_LEFT);
             $student->center_id = $id;
 
             if($request['ba_type'] != 2){
@@ -87,6 +88,16 @@ class StudentController extends Controller
             }
 
             $student->save();
+            if($request['ba_type'] != 1){
+                $relationship = new Relationship;
+                $relationship->student_id = $student->id;
+                $relationship->classification = 0;
+                if($request['ba_type'] == 2)
+                    $relationship->relation_id = $request['ba_id'];
+                else
+                    $relationship->relation_id = $parent->id;
+                $relationship->save();
+            }
             return redirect('/Student');
         }
     }
@@ -183,10 +194,10 @@ class StudentController extends Controller
                 }
             else {
                 $relationship = new Relationship;
-                    $relationship->student_id = $id;
-                    $relationship->classification = 0;
-                    $relationship->relation_id = $request['parentid'];
-                    $relationship->save();
+                $relationship->student_id = $id;
+                $relationship->classification = 0;
+                $relationship->relation_id = $request['parentid'];
+                $relationship->save();
             }
 
             return redirect('Student/'.$id.'/Summary');
