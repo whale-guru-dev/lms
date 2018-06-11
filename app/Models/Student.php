@@ -9,16 +9,16 @@ class Student extends Model
     protected $table = 'tb_student';
     public $timestamps = false;
 
-    protected $fillable = ['student_id','student_nickname','student_given_name','student_surname','student_gender','student_dob','student_profile_pic','student_enrolled_since','student_school','student_billing_account_id','student_status','center_id'];
+    protected $fillable = ['student_id','student_nickname','student_full_name','student_gender','student_dob','student_profile_pic','student_enrolled_since','student_school','student_billing_account_id','student_status','center_id'];
 
     public function billingaccount()
     {
-    	return $this->hasOne('App\Models\BillingAccount','student_billing_account_id');
+    	return $this->belongsTo('App\Models\BillingAccount','student_billing_account_id');
     }
 
     public function center()
     {
-    	return $this->hasOne('App\Models\Center','center_id');
+    	return $this->belongsTo('App\Models\Center');
     }
 
 

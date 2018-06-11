@@ -9,9 +9,9 @@ class Center extends Model
     protected $table = 'tb_center';
     public $timestamps = false;
 
-    public function usercenteraccessibility()
+    public function user()
     {
-    	return $this->belongsToMany('App\Models\UserCenterAccessibility');
+    	return $this->belongsToMany('App\Models\User','tb_user_center_accessibility','user_id','center_id');
     }
 
     public function contact()
@@ -36,6 +36,6 @@ class Center extends Model
 
     public function student()
     {
-        return $this->belongsTo('App\Models\Student');
+        return $this->hasMany('App\Models\Student','center_id');
     }
 }

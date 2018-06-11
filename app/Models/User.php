@@ -30,14 +30,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function usercenteraccessbility()
-    {
-        return $this->belongsToMany('App\Models\UserCenterAccessibility');
-    }
+    // public function usercenteraccessbility()
+    // {
+    //     return $this->belongsToMany('App\Models\UserCenterAccessibility');
+    // }
 
-    public function usercenter()
+    public function center()
     {
-        return $this->belongsToMany('App\Models\Center');
+        return $this->belongsToMany('App\Models\Center','tb_user_center_accessibility','user_id','center_id');
     }
 
 }

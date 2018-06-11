@@ -18,7 +18,7 @@ class Parents extends Model
 
     public function billingaccount()
     {
-    	return $this->belongsTo('App\Models\BillingAccount');
+    	return $this->hasOne('App\Models\BillingAccount','billingaccount_id');
     }
 
 

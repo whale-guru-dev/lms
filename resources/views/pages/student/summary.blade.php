@@ -80,13 +80,10 @@ use \Carbon\Carbon;
                                        </tr>
                                    </thead>   
                                     <tr>
-                                        <td>Given Names</td>
-                                        <td>{{$student->student_given_name}}</td>
+                                        <td>Full Names</td>
+                                        <td>{{$student->student_full_name}}</td>
                                     </tr>
-                                    <tr>
-                                        <td>Surname</td>
-                                        <td>{{$student->student_surname}}</td>
-                                    </tr>
+
                                     <tr>
                                         <td>Gender</td>
                                         <td>{{$gender[$student->student_gender]}}</td>
@@ -129,7 +126,8 @@ use \Carbon\Carbon;
                                     </tr> -->
                                     <tr>
                                         <td>Billing Account</td>
-                                        <td>{{$bas->where('id',$student->student_billing_account_id)->first()->billing_account_name}}</td>
+                                        <td>{{$student->billingaccount->first_name.' '.$student->billingaccount->last_name}}</td>
+                                        
                                     </tr>
                                 </table>
                             </div>
@@ -156,13 +154,10 @@ use \Carbon\Carbon;
                                        </tr>
                                    </thead>   
                                     <tr>
-                                        <td>Given Names</td>
-                                        <td><input type="text" name="gName" value="{{$student->student_given_name}}"></td>
+                                        <td>Full Names</td>
+                                        <td><input type="text" name="fullName" value="{{$student->student_full_name}}"></td>
                                     </tr>
-                                    <tr>
-                                        <td>Surname</td>
-                                        <td><input type="text" name="sName" value="{{$student->student_surname}}"></td>
-                                    </tr>
+
                                     <tr>
                                         <td>Gender</td>
                                         <td>
@@ -212,17 +207,7 @@ use \Carbon\Carbon;
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Billing Account</td>
-                                        <td>
-                                          <select name="billingaccount">
-                                            <option value="" disabled  >Billing Accounts</option>
-                                            @foreach($bas as $ba)
-                                            <option value="{{$ba->id}}" <?php echo $student->student_billing_account_id == $ba->id? 'selected':'';?>>{{$ba->billing_account_name}}</option>
-                                            @endforeach
-                                          </select>
-                                        </td>
-                                    </tr>
+                                    
                                 </table>
                             </div>
                         </div>
@@ -267,7 +252,7 @@ use \Carbon\Carbon;
 
                                 <tr>
                                   <td>{{$sibling->pivot->sibling_type == 0 ? 'Brother' : 'Sister'}}</td>
-                                  <td>{{$sibling->student_given_name.' '.$sibling->student_surname}}</td>
+                                  <td>{{$sibling->student_full_name}}</td>
                                 </tr>
 
                               @endforeach
@@ -621,7 +606,8 @@ use \Carbon\Carbon;
             <tr>
               <th>Select</th>
               <th>Date of Birth</th>
-              <th>Name</th>
+              <th>Nick Name</th>
+              <th>Full Name</th>
               <th>School</th>
             </tr>
           </thead>
@@ -651,23 +637,33 @@ use \Carbon\Carbon;
       </div>
 
       <div class="search-area">
-        <form action="">
-          <input type="text" placeholder="SEARCH (Name, Mobile, Email)">
-          <button>GO</button>
-        </form>
+
+        <div class="input-field col s6 s12 red-text">
+          <i class="red-text material-icons prefix" style="cursor: pointer;" onclick="searchstudentparent()">search</i>
+          <input type="text" placeholder="First Name, Last Name, Mobile, Email" id="search-parent-val">
+        </div>
       </div>
       
       <div class="info-table-c">
-        <table id="find-parent-student">
-          <tr>
-            <td>Daniel Aiello</td>
-            <td>0474000888</td>
-            <td>daiello@me.com</td>
-          </tr>
+        <table>
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Fist Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
+            </tr>
+          </thead>
+          <tbody id="find-student-parent">
+          </tbody>
         </table>
       </div>
-
-      <a href="" class="btn">create new</a>
+      <form action="{{url('/Student/'.$student->id.'/AddParent')}}" method="POST" id="add-parent">
+        @csrf
+        <input type="hidden" name="parentid" id="parentid">
+      </form>
+      <a href="#" class="btn" onclick="event.preventDefault();addparent();">Add</a>
     </div>
   </div>
 <!-- END SIBLING -->
@@ -683,7 +679,7 @@ use \Carbon\Carbon;
       <div class="search-area">
         <form action="{{url('/Student/'.$student->id.'/NewParent')}}" method="POST" id="newparent-form">
           @csrf
-            <div class="input-field">
+          <div class="input-field">
             <input id="first_name" class="validate" type="text" name="fName" required="">
             <label for="first_name" class="">First Name</label>
           </div>
@@ -780,7 +776,7 @@ use \Carbon\Carbon;
         var i = 0;
 
         student.forEach(function(){
-          searchelement += "<tr><td><p><label><input type=\"checkbox\" class=\"filled-in\" name=\"selStu\" value=\""+student[i]['id']+"\"/><span></span></label></p></td><td>"+student[i]['student_dob']+"</td><td>"+student[i]['student_given_name']+" "+student[i]['student_surname']+"</td><td>"+student[i++]['student_school']+"</td></tr>" ;
+          searchelement += "<tr><td><p><label><input type=\"checkbox\" class=\"filled-in\" name=\"selStu\" value=\""+student[i]['id']+"\"/><span></span></label></p></td><td>"+student[i]['student_dob']+"</td><td>"+student[i]['student_nickname']+"</td><td>"+student[i]['student_full_name']+"</td><td>"+student[i++]['student_school']+"</td></tr>" ;
         });
 
         $("#find-student-sibling").html(searchelement);
@@ -790,6 +786,34 @@ use \Carbon\Carbon;
       }
     });
   }
+
+  function searchstudentparent(){
+    var search = $("#search-parent-val").val();
+    $.ajax({
+      url : '{{url('/Search/Student/Parent')}}',
+      type : 'POST',
+      data : {
+        "_token" : "{{ csrf_token() }}",
+        'current' : "{{$student->id}}",
+        "query" : search
+      },
+      dataType : 'html',
+      success : function(data){
+        var parent = JSON.parse(data)['parent'];
+        var searchelement = "";
+        var i = 0;
+
+        parent.forEach(function(){
+          searchelement += "<tr><td><p><label><input type=\"checkbox\" class=\"filled-in\" name=\"selParent\" value=\""+parent[i]['id']+"\"/><span></span></label></p></td><td>"+parent[i]['fName']+"</td><td>"+parent[i]['lName']+"</td><td>"+parent[i]['email']+"</td><td>"+parent[i++]['mobile']+"</td></tr>" ;
+        });
+
+        $("#find-student-parent").html(searchelement);
+      },
+      error : function(){
+        console.log("error")
+      }
+    });
+  } 
 
   function addsibling(){
 
@@ -801,6 +825,19 @@ use \Carbon\Carbon;
     $("#siblingid").val(selected_ids);
 
     $("#add-sibling").submit()
+
+  }
+
+  function addparent(){
+
+    var selected_ids = new Array();
+    $.each($("input[name='selParent']:checked"), function() {
+      selected_ids.push($(this).val());
+    });
+
+    $("#parentid").val(selected_ids);
+
+    $("#add-parent").submit()
 
   }
 </script>

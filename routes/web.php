@@ -43,16 +43,18 @@ Route::group(['prefix'=>'Center'],function(){
 
 Route::group(['prefix'=>'Student'],function(){
 	Route::get('/', 'StudentController@index');
+	Route::get('/{centername}','StudentController@std_on_center');
 	Route::get('/{id}/Summary', 'StudentController@summary');
 	Route::get('/{id}/Class','StudentController@classes');
 	Route::get('/{id}/Enrollment','StudentController@enrolment');
 
-	Route::post('/NewStudent','StudentController@newstudent');
+	Route::post('/{id}/NewStudent','StudentController@newstudent');
 	Route::post('/NewBillingaccount', 'StudentController@newbillingaccount');
 
 	Route::post('/{id}/EditStudent','StudentController@editstudent');
 	Route::post('/{id}/PropicChange','StudentController@changepropic');
 	Route::post('/{id}/NewParent','StudentController@newparent');
+	Route::post('/{id}/AddParent','StudentController@addparent');
 	Route::post('/{id}/AddSibling','StudentController@addsibling');
 });
 

@@ -184,7 +184,7 @@ $status_class = ['status-inactive','status-active'];
                         <img src="{{asset('assets/propic/'.$std->student_profile_pic)}}" alt="">
                       </div>
                     
-                      {{$std->student_surname.' '.$std->student_given_name}}
+                      {{$std->student_full_name}}
                     </a>
                   </td>
                   <td>{{$std->student_dob}} <sub>{{Carbon::parse($std->student_dob)->age}} y/o</sub></td>
@@ -441,13 +441,8 @@ $status_class = ['status-inactive','status-active'];
             </div>
 
             <div class="input-field">
-              <input id="first_name" type="text" class="validate">
-              <label for="first_name">First Name</label>
-            </div>
-
-            <div class="input-field">
-              <input id="Last_name" type="text" class="validate">
-              <label for="Last_name">Last Name</label>
+              <input id="full_name" type="text" class="validate">
+              <label for="full_name">Full Name</label>
             </div>
 
             <div class="input-field">
@@ -489,9 +484,9 @@ $status_class = ['status-inactive','status-active'];
     </div>
 
     <div class="modal-bottom-part">
-      <h5>Student Detaitls</h5>
+      <h5>Student Details</h5>
 
-      <form action="{{url('/Student/NewStudent')}}" method="POST">
+      <form action="{{url('/Student/'.$center_id.'/NewStudent')}}" method="POST">
         @csrf
         <div class="row">
           <div class="col s12 l5">
@@ -502,28 +497,8 @@ $status_class = ['status-inactive','status-active'];
             </div>
 
             <div class="input-field">
-              <input id="first_name" type="text" class="validate" name="gName">
-              <label for="first_name">Given Name</label>
-            </div>
-
-            <div class="input-field">
-              <input id="Last_name" type="text" class="validate" name="sName">
-              <label for="Last_name">Surname</label>
-            </div>
-
-            <div class="input-field">
-              <label>Gender</label><br>
-              <p>
-                <label>
-                  <input class="with-gap" name="gender" type="radio"  value="0" checked="" />
-                  <span>Male</span>
-                </label>
-              
-                <label>
-                  <input class="with-gap" name="gender" type="radio"  value="1"/>
-                  <span>Female</span>
-                </label>
-              </p>
+              <input id="fullName" type="text" class="validate" name="fullName">
+              <label for="fullName">Full Name</label>
             </div>
 
             <button class="waves-effect waves-light btn-small" type="submit">save</button>
@@ -536,41 +511,72 @@ $status_class = ['status-inactive','status-active'];
               <div class="top-title center">
                 <h4>billing account details</h4>
                 <p>Who is the billing contact for this students</p>
+                <input type="hidden" name="ba_type" id="ba_type">
               </div>
 
               <div class="row">
                 <div class="col s12 m4">
-                  <button class="modal-button">student</button>
+                  <button class="modal-button cb1" onclick="event.preventDefault();choose_ba(1)">student</button>
                 </div>
 
                 <div class="col s12 m4">
-                  <button class="modal-button">existing account/parent </button>
+                  <button class="modal-button cb2" onclick="event.preventDefault();choose_ba(2)">existing account/parent </button>
                 </div>
 
                 <div class="col s12 m4">
-                  <button class="modal-button">New account/parent </button>
+                  <button class="modal-button cb3" onclick="event.preventDefault();choose_ba(3)">New account/parent </button>
                 </div>
               </div>
 
-              <div class="input-field">
-                <input id="first_name2" type="text" class="validate">
-                <label for="first_name2">First Name</label>
+              <div id="ba_fields_1">
+                <div class="input-field">
+                  <input id="fName" type="text" class="validate" value="" name="fName">
+                  <label for="fName">First Name</label>
+                </div>
+
+                <div class="input-field">
+                  <input id="lName" type="text" class="validate" name="lName">
+                  <label for="lName">Last Name</label>
+                </div>
+
+                <div class="input-field">
+                  <input id="mobile" type="text" class="validate" name="mobile">
+                  <label for="mobile">Mobile</label>
+                </div>
+
+                <div class="input-field">
+                  <input id="email" type="email" class="validate" name="email">
+                  <label for="email">email address</label>
+                </div>
               </div>
 
-              <div class="input-field">
-                <input id="Last_name2" type="text" class="validate">
-                <label for="Last_name2">Last Name</label>
+              <div id="ba_fields_2" style="display: none;">
+                <div class="search-area">
+                  <!-- <form action=""> -->
+                    <div class="input-field col s6 s12 red-text">
+                      <i class="red-text material-icons prefix" style="cursor: pointer;" onclick="searchbillingaccount()">search</i>
+                      <input type="text" placeholder="First Name, Last Name, Email, Mobile" id="search-ba-val">
+                    </div>
+                    
+                  <!-- </form> -->
+                </div>
+                <div class="info-table-c">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Select</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                      </tr>
+                    </thead>
+                    <tbody id="find-existing-ba">
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
-              <div class="input-field">
-                <input id="mobile_no" type="text" class="validate">
-                <label for="mobile_no">Mobile</label>
-              </div>
-
-              <div class="input-field">
-                <input id="email_add" type="email" class="validate">
-                <label for="email_add">email address</label>
-              </div>
             </div>
           </div>
         </div>
@@ -582,4 +588,72 @@ $status_class = ['status-inactive','status-active'];
   </div>
 </div>
 
+@endsection
+
+@section('add_js')
+<script type="text/javascript">
+  function choose_ba($type){
+    switch ($type){
+      case 1:
+        $(".cb1").css('background-color','#4d73db');
+        $(".cb2").css('background-color','#fff');
+        $(".cb3").css('background-color','#fff');
+        $("#ba_type").val(1);
+        $("#ba_fields_2").hide();
+        $("#ba_fields_1").show();
+        break;
+      case 2:
+        $(".cb1").css('background-color','#fff');
+        $(".cb3").css('background-color','#fff');
+        $(".cb2").css('background-color','#4d73db');
+        $("#ba_type").val(2);
+        $("#ba_fields_1").hide();
+        $("#ba_fields_2").show();
+        break;
+      case 3:
+        $(".cb1").css('background-color','#fff');
+        $(".cb2").css('background-color','#fff');
+        $(".cb3").css('background-color','#4d73db');
+        $("#ba_type").val(3);
+        $("#ba_fields_1").show();
+        $("#ba_fields_2").hide();
+        break;
+      default:
+        $(".cb2").css('background-color','#fff');
+        $(".cb3").css('background-color','#fff');
+        $(".cb1").css('background-color','#4d73db');
+        $("#ba_type").val(3);
+        $("#ba_fields_2").hide();
+        $("#ba_fields_1").show();
+        break;
+    }
+  }
+
+  function searchbillingaccount(){
+    var search = $("#search-ba-val").val();
+    $.ajax({
+      url : '{{url('/Search/Student/BillingAccount')}}',
+      type : 'POST',
+      data : {
+        "_token" : "{{ csrf_token() }}",
+        query: search
+      },
+      dataType : 'html',
+      success : function(data){
+        var ba = JSON.parse(data)['ba'];
+        var searchelement = "";
+        var i = 0;
+
+        ba.forEach(function(){
+          searchelement += "<tr><td><p><label><input type=\"radio\" class=\"filled-in\" name=\"ba_id\" value=\""+ba[i]['id']+"\"/><span></span></label></p></td><td>"+ba[i]['first_name']+"</td><td>"+ba[i]['last_name']+"</td><td>"+ba[i]['mobile']+"</td><td>"+ba[i++]['email']+"</td></tr>" ;
+        });
+
+        $("#find-existing-ba").html(searchelement);
+      },
+      error : function(){
+        console.log("error")
+      }
+    });
+  }
+</script>
 @endsection
