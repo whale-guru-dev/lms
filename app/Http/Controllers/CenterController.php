@@ -127,7 +127,7 @@ class CenterController extends Controller
 	    			break;
 
                 case 'Schedules':
-                    return view('pages.center.start_schedule',['id'=>$id]);
+                    return view('pages.center.start_schedule',['id'=>$id,'module'=>$module]);
 
 	    		case 'Default-Schedule':
 	    			$schedule = CenterSchedule::where('center_id',$id)->get();
