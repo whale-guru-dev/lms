@@ -25,7 +25,7 @@
 			</div>
 
 			<div class="boxs-a">
-				<a href="{{url('/'.$centername.'/Student')}}" class="single-box waves-effect waves-light modal-trigger">
+				<a href="{{url('/Student/'.$centername)}}" class="single-box waves-effect waves-light modal-trigger">
 					<div class="inner-part">
 						<div class="icon"></div>
 						<h4>Students</h4>

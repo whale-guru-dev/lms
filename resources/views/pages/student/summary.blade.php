@@ -7,12 +7,16 @@ $gender = ['Male','Female'];
 use \Carbon\Carbon;
 
 ?>
+<style type="text/css">
+
+</style>
+
 <div class="secend-nav">
     <div class="row">
         <ul>
-            <li><a href="{{url('/'.$centername.'/Student/'.$student->id.'/Summary')}}"><span class="nav-icon"></span> Summary</a></li>
-            <li><a href="{{url('/'.$centername.'/Student/'.$student->id.'/Class')}}"><span class="nav-icon"></span> Class</a></li>
-            <li><a href="{{url('/'.$centername.'/Student/'.$student->id.'/Enrollment')}}"><span class="nav-icon"></span> Enrolment</a></li>
+            <li><a href="{{url('/Student/'.$centername.'/'.$student->id.'/Summary')}}"><span class="nav-icon"></span> Summary</a></li>
+            <li><a href="{{url('/Student/'.$centername.'/'.$student->id.'/Class')}}"><span class="nav-icon"></span> Class</a></li>
+            <li><a href="{{url('/Student/'.$centername.'/'.$student->id.'/Enrollment')}}"><span class="nav-icon"></span> Enrolment</a></li>
             <li><a href=""><span class="nav-icon"></span> Communication</a></li>
             <li><a href=""><span class="nav-icon"></span> Finance</a></li>
             <li><a href=""><span class="nav-icon"></span> Log</a></li>
@@ -27,7 +31,7 @@ use \Carbon\Carbon;
         <div class="col s12 m12 l6">
             <div class="user-info">               
                 <div class="inner-top-part">
-                  <div class="arrow-back"><a href="{{url('/'.$centername.'/Student')}}"><i class="material-icons dp48">arrow_back</i></a></div> 
+                  <div class="arrow-back"><a href="{{url('/Student/'.$centername.'/')}}"><i class="material-icons dp48">arrow_back</i></a></div> 
                     <div class="top-left">
                         <p>{{$student->student_id}}</p>
                         <h5>{{$student->student_surname.' '.$student->student_given_name}} <span class="badge-green">Enrolled</span></h5>
@@ -48,7 +52,7 @@ use \Carbon\Carbon;
                 </div>
                 <div class="user-more-info">
                     <div class="user-image z-depth-1">
-                      <form action="{{url('/'.$centername.'/Student/'.$student->id.'/PropicChange')}}" method="POST" enctype="multipart/form-data" id="propic-form">
+                      <form action="{{url('/Student/'.$centername.'/'.$student->id.'/PropicChange')}}" method="POST" enctype="multipart/form-data" id="propic-form">
                         @csrf
                            <div class="icon-edit">
 
@@ -134,7 +138,7 @@ use \Carbon\Carbon;
                         </div>
                     </div>
                     <div class="profile-info-area z-depth-1" id="edit-profile" style="display: none;">
-                      <form action="{{url('/'.$centername.'/Student/'.$student->id.'/EditStudent')}}" method="POST" id="edit-profile-form"> 
+                      <form action="{{url('/Student/'.$centername.'/'.$student->id.'/EditStudent')}}" method="POST" id="edit-profile-form"> 
                                 @csrf
                         <div class="title-a">
                             <h5>Edit Profile</h5>
@@ -305,30 +309,48 @@ use \Carbon\Carbon;
         </div> 
         <div class="col s12 m12 l6">
             <div class="archive-area">
-                <h4>Archive Enrolments</h4>
-                <div class="right-part-select">
-                    
-                    <div class="col s12 m3">
-                      <div class="input-field">
-                        <select>
-                          <option value="" disabled selected>Course Type</option>
-                          <option value="1">options</option>
-                          <option value="2">options</option>
-                          <option value="3">options</option>
-                        </select>
-                      </div>
-                     </div>
-                    <div class="col s12 m3">
-                      <div class="input-field">
-                        <select>
-                          <option value="" disabled selected>Enrollment Type</option>
-                          <option value="1">options</option>
-                          <option value="2">options</option>
-                          <option value="3">options</option>
-                        </select>
-                      </div>
-                     </div>
+              <div class="row">
+                <div class="col s6 m5 6">
+                  <h4>Archive Enrolments</h4>
                 </div>
+                <div class="col s6 m7 6">
+                  <div class="right-part-select">
+                    <div class="row">
+
+                        <div class="input-field col s4 m4">
+                          <select name="enrollment_status">
+                            <option value="" disabled selected>Enrollment Status</option>
+                            <option value="1">Current</option>
+                            <option value="2">Upcoming</option>
+                            <option value="3">Previous</option>
+                          </select>
+                        </div>
+
+                        <div class="input-field col s4 m4">
+                          <select name="course_type">
+                            <option value="" disabled selected>Course Type</option>
+                            <option value="1">options</option>
+                            <option value="2">options</option>
+                            <option value="3">options</option>
+                          </select>
+                        </div>
+
+                        <div class="input-field col s4 m4">
+                          <select name="enrollment_type">
+                            <option value="" disabled selected>Enrollment Type</option>
+                            <option value="1">Full</option>
+                            <option value="2">Trial</option>
+                            <option value="3">Reservation</option>
+                          </select>
+                        </div>
+
+                    </div>
+                       
+                  </div>
+                </div>
+              </div>
+              
+                
             </div>
             <div class="enrolment-single-area">
                 
@@ -616,7 +638,7 @@ use \Carbon\Carbon;
         </table>
       </div>
       <br>
-      <form action="{{url('/'.$centername.'/Student/'.$student->id.'/AddSibling')}}" method="POST" id="add-sibling">
+      <form action="{{url('/Student/'.$centername.'/'.$student->id.'/AddSibling')}}" method="POST" id="add-sibling">
         @csrf
         <input type="hidden" name="siblingid" id="siblingid">
       </form>
@@ -659,7 +681,7 @@ use \Carbon\Carbon;
           </tbody>
         </table>
       </div>
-      <form action="{{url('/'.$centername.'/Student/'.$student->id.'/AddParent')}}" method="POST" id="add-parent">
+      <form action="{{url('/Student/'.$centername.'/'.$student->id.'/AddParent')}}" method="POST" id="add-parent">
         @csrf
         <input type="hidden" name="parentid" id="parentid">
       </form>
@@ -677,7 +699,7 @@ use \Carbon\Carbon;
       </div>
 
       <div class="search-area">
-        <form action="{{url('/'.$centername.'/Student/'.$student->id.'/NewParent')}}" method="POST" id="newparent-form">
+        <form action="{{url('/Student/'.$centername.'/'.$student->id.'/NewParent')}}" method="POST" id="newparent-form">
           @csrf
           <div class="input-field">
             <input id="first_name" class="validate" type="text" name="fName" required="">

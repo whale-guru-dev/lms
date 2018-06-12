@@ -25,13 +25,13 @@
         <a href="{{url('/Home')}}" class="brand-logo"><img src="{{asset('assets/img/logo.png')}}" alt=""></a>
 <!--         <a href="#" class="menu-mid center">Chatswood <img src="{{asset('assets/img/middle_menu.png')}}" alt=""></a> -->
         @if($module == 'Center')
-          <a class='dropdown-trigger menu-mid center' href='#' data-target='centers' disabled>Centers <img src="{{asset('assets/img/middle_menu.png')}}" alt=""></a>
+          <a class='menu-mid center' href='#' >Centers <img src="{{asset('assets/img/middle_menu.png')}}" alt=""></a>
         @else
         <a class='dropdown-trigger menu-mid center' href='#' data-target='centers'>{{$centername}} <img src="{{asset('assets/img/middle_menu.png')}}" alt=""></a>
         <ul id='centers' class='dropdown-content'>
           @foreach($centers as $cent)
             @if($cent->pivot->center_accessibility_id != 1)
-              <li><a href="{{url('/'.$cent->center_name.'/'.$module)}}">{{$cent->center_name}}</a></li>
+              <li><a href="{{url('/'.$module.'/'.$cent->center_name)}}">{{$cent->center_name}}</a></li>
             @endif
           @endforeach
         </ul>

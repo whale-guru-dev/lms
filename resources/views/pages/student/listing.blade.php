@@ -182,7 +182,7 @@ $status_class = ['status-inactive','status-active'];
                 @foreach($students as $std)
                   <tr>
                     <td style="text-align: left;">
-                      <a href="{{url('/'.$centername.'/Student/'.$std->id.'/Summary')}}">
+                      <a href="{{url('/Student/'.$centername.'/'.$std->id.'/Summary')}}">
                         <div class="avatar-box">
                           <img src="{{asset('assets/propic/'.$std->student_profile_pic)}}" alt="">
                         </div>
@@ -490,7 +490,7 @@ $status_class = ['status-inactive','status-active'];
     <div class="modal-bottom-part">
       <h5>Student Details</h5>
 
-      <form action="{{url('/'.$centername.'/Student/'.$center_id.'/NewStudent')}}" method="POST">
+      <form action="{{url('/Student/'.$centername.'/'.$center_id.'/NewStudent')}}" method="POST">
         @csrf
         <div class="row">
           <div class="col s12 l5">

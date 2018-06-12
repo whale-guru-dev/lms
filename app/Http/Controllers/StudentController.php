@@ -98,7 +98,7 @@ class StudentController extends Controller
                     $relationship->relation_id = $parent->id;
                 $relationship->save();
             }
-            return redirect('/'.$centername.'/Student');
+            return redirect('/Student/'.$centername);
         }
     }
 
@@ -125,7 +125,7 @@ class StudentController extends Controller
                 
             $student->save();
 
-            return redirect('/'.$centername.'/Student/'.$student->id.'/Summary');
+            return redirect('/Student/'.$centername.'/'.$student->id.'/Summary');
         }
     }
 
@@ -151,7 +151,7 @@ class StudentController extends Controller
                 $destinationPath = public_path('assets/propic');
                 
                 if($student->save() && $profileImage->move($destinationPath, $name)){
-                    return redirect('/'.$centername.'/Student/'.$student->id.'/Summary');
+                    return redirect('/Student/'.$centername.'/'.$student->id.'/Summary');
                 }
             }
         }
@@ -177,7 +177,7 @@ class StudentController extends Controller
             $relationship->relation_id = $parent->id;
             $relationship->save();
 
-            return redirect('/'.$centername.'/Student/'.$id.'/Summary');
+            return redirect('/Student/'.$centername.'/'.$id.'/Summary');
         }
     }
 
@@ -200,7 +200,7 @@ class StudentController extends Controller
                 $relationship->save();
             }
 
-            return redirect('/'.$centername.'/Student/'.$id.'/Summary');
+            return redirect('/Student/'.$centername.'/'.$id.'/Summary');
             
         }
     }
@@ -230,7 +230,7 @@ class StudentController extends Controller
                 $sibling->save();
             }
 
-            return redirect('/'.$centername.'/Student/'.$id.'/Summary');
+            return redirect('/Student/'.$centername.'/'.$id.'/Summary');
             
         }
     }

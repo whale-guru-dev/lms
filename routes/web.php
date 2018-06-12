@@ -38,10 +38,11 @@ Route::group(['prefix'=>'Center'],function(){
 
 	Route::post('/NewCenter','CenterController@newcenter');
 
-
 });
-Route::group(['prefix'=>'{centername}'],function(){
-	Route::group(['prefix'=>'Student'],function(){
+
+
+Route::group(['prefix'=>'Student'],function(){
+	Route::group(['prefix'=>'{centername}'],function(){
 		Route::get('/', 'StudentController@index');
 		// Route::get('/{centername}','StudentController@std_on_center');
 		Route::get('/{id}/Summary', 'StudentController@summary');
