@@ -46,6 +46,24 @@ class StudentController extends Controller
         return view('pages.student.enrolment',['student' => $student,'centername'=>$centername,'module'=>'Student']);
     }
 
+    public function finance($centername, $id)
+    {
+        $student = Student::where('id', $id)->first();
+        return view('pages.student.finance',['student' => $student,'centername'=>$centername,'module'=>'Student']);
+    }
+
+    public function log($centername, $id)
+    {
+        $student = Student::where('id', $id)->first();
+        return view('pages.student.log',['student' => $student,'centername'=>$centername,'module'=>'Student']);
+    }
+
+    public function file($centername, $id)
+    {
+        $student = Student::where('id', $id)->first();
+        return view('pages.student.file',['student' => $student,'centername'=>$centername,'module'=>'Student']);
+    }
+
     // public function std_on_center($centername)
     // {
     //     $center = Center::where('center_name',$centername)->first();

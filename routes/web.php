@@ -48,6 +48,9 @@ Route::group(['prefix'=>'Student'],function(){
 		Route::get('/{id}/Summary', 'StudentController@summary');
 		Route::get('/{id}/Class','StudentController@classes');
 		Route::get('/{id}/Enrollment','StudentController@enrolment');
+		Route::get('/{id}/Finance','StudentController@finance');
+		Route::get('/{id}/Log','StudentController@log');
+		Route::get('/{id}/Files','StudentController@file');
 
 		Route::post('/{id}/NewStudent','StudentController@newstudent');
 		Route::post('/NewBillingaccount', 'StudentController@newbillingaccount');
