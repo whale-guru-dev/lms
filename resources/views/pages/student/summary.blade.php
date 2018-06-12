@@ -16,7 +16,7 @@ use \Carbon\Carbon;
         <ul>
             <li><a href="{{url('/Student/'.$centername.'/'.$student->id.'/Summary')}}"><span class="nav-icon"></span> Summary</a></li>
             <li><a href="{{url('/Student/'.$centername.'/'.$student->id.'/Class')}}"><span class="nav-icon"></span> Class</a></li>
-            <li><a href="{{url('/Student/'.$centername.'/'.$student->id.'/Enrollment')}}"><span class="nav-icon"></span> Enrolment</a></li>
+            <li><a href="{{url('/Student/'.$centername.'/'.$student->id.'/Enrollment')}}"><span class="nav-icon"></span> Enrollment</a></li>
             <li><a href=""><span class="nav-icon"></span> Communication</a></li>
             <li><a href=""><span class="nav-icon"></span> Finance</a></li>
             <li><a href=""><span class="nav-icon"></span> Log</a></li>
