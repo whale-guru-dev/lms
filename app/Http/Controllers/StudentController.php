@@ -139,11 +139,11 @@ class StudentController extends Controller
                 ]);
                 $profileImage = $request->file('propic');
 
-                if($student->student_profile_pic != 'mdefault.png' && $student->student_profile_pic != 'fdefault.png')
-                    $name = $student->student_profile_pic;
+                // if($student->student_profile_pic != 'mdefault.png' && $student->student_profile_pic != 'fdefault.png')
+                //     $name = $student->student_profile_pic;
 
-                else 
-                    $name = $this->generateRandomString().'.'.$profileImage->getClientOriginalExtension();
+                // else 
+                $name = $this->generateRandomString().'.'.$profileImage->getClientOriginalExtension();
 
                 $student->student_profile_pic = $name;
 
