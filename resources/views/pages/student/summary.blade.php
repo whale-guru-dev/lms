@@ -64,7 +64,7 @@ use \Carbon\Carbon;
                             
                           </div>
 
-                          <img src="{{asset('assets/propic/'.$student->student_profile_pic)}}" id="propic-img" alt="Profile Picture" width="100%">
+                          <img src="{{asset('assets/propic/'.$student->student_profile_pic)}}" id="propic-img" alt="Profile Picture" width="245" height="270">
          
                       </form>
                       

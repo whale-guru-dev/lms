@@ -64,12 +64,6 @@ class StudentController extends Controller
         return view('pages.student.file',['student' => $student,'centername'=>$centername,'module'=>'Student']);
     }
 
-    // public function std_on_center($centername)
-    // {
-    //     $center = Center::where('center_name',$centername)->first();
-    //     $students = Student::where('center_id', $center->id)->get();
-    //     return view('pages.student.listing',['students' => $students,'center_id'=>$center->id]);
-    // }
 
     public function newstudent($centername, $id, Request $request)
     {
@@ -132,7 +126,7 @@ class StudentController extends Controller
             $student->student_enrolled_since = $request['enrolled_since'];
             $student->student_school = $request['school'];
             $student->student_contract = isset($request['contract'])?$request['contract']:null;
-            // $student->student_billing_account_id = $request['billingaccount'];
+
             if($student->student_profile_pic == 'mdefault.png' || $student->student_profile_pic == 'fdefault.png' || $student->student_profile_pic == null){
                 if($request['gender'] == 0){
                     $student->student_profile_pic = 'mdefault.png';
@@ -157,10 +151,6 @@ class StudentController extends Controller
                 ]);
                 $profileImage = $request->file('propic');
 
-                // if($student->student_profile_pic != 'mdefault.png' && $student->student_profile_pic != 'fdefault.png')
-                //     $name = $student->student_profile_pic;
-
-                // else 
                 $name = $this->generateRandomString().'.'.$profileImage->getClientOriginalExtension();
 
                 $student->student_profile_pic = $name;
