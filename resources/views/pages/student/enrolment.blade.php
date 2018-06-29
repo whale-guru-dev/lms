@@ -16,7 +16,7 @@
     </div>
 </div>   
 <!-- Main wrapper -->
-
+<!-- Main wrapper -->
 <div class="main-wrapper">  
     <div class="row">
         <div class="col s12">
